@@ -142,7 +142,8 @@ a {
 .left-bar{
 	width: 20%;
 	border-bottom: 1px solid #eee;
-	min-height: 90vh;
+	height: 75vh;
+	background-color: #34495e;
 }
 
 .main-bar{
@@ -151,8 +152,9 @@ a {
     border-left: 2px solid #eee;
     margin-left: 31px;
 	margin-bottom: 10px;
-	height: 100vh;
-	background-color: #fff;
+	height: 66vh;
+	background-color:red;
+	/* background-color: #fff; */
 	
 }
 
@@ -161,9 +163,10 @@ a {
 	background-color: #fff;
 	margin-left: 5vh;
 	margin-right: 5vh;
-	height: 100vh;
+	height: 66vh;
 	margin-bottom: 10px;
 	padding: 40px 0 20px 0;
+	background-color:black;
 	
 } 
  
