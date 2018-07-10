@@ -69,7 +69,7 @@ a {
 		display: flex;
     }
     
-	.header {
+	.header,{
 		flex-direction: column;
 		align-items: center;
     	 .header{
@@ -131,7 +131,39 @@ a {
 	display: flex;
 	justify-content: flex-end;
 	padding-left: 0px;
-    
-
 }
 
+.body-container{
+	display: flex;
+	height: 100%;
+	background-color: inherit;
+}
+
+.left-bar{
+	width: 20%;
+	border-bottom: 1px solid #eee;
+	min-height: 90vh;
+}
+
+.main-bar{
+	width: 60%;
+	padding: 40px 0 20px 0;
+    border-left: 2px solid #eee;
+    margin-left: 31px;
+	margin-bottom: 10px;
+	height: 100vh;
+	background-color: #fff;
+	
+}
+
+.right-bar{
+	width: 20%;
+	background-color: #fff;
+	margin-left: 5vh;
+	margin-right: 5vh;
+	height: 100vh;
+	margin-bottom: 10px;
+	padding: 40px 0 20px 0;
+	
+} 
+ 
