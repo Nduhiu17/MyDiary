@@ -93,24 +93,18 @@ a {
 
 .subheader{
 	height: 38px;
-    /* border-bottom: 1px solid #dee5e8; */
     background-color: #f6f7f8;
-    /* padding: 0 30px; */
     font-size: 15px;
 	position: fixed;
 	overflow-y: scroll;
-	/* top: 0; */
 }
 
  input {
     padding-left: 40px;
-    /* height: 100%; */
     width: 50%;
     border: 0 none;
     background:transparent;
-	/* padding-top: 2px; */
 	background:transparent;
-	/* margin-right: 0px; */
 } 
 
 .flex-container{
@@ -209,4 +203,34 @@ footer{
 	  
 	h3{
 		text-align: center;
+	}
+
+	.detailsmaincontainer{
+		margin: 10px;
+		border: 0.1px solid #ccc;
+	}
+
+	.detailsmaincontainer >div{
+		margin: 5px;
+	}
+
+
+	.detailseditbutton{
+		background-color: #9fb1b9;
+		font-size:14px;
+		height: 6vh;
+		width: 100%; 
+		color: whitesmoke;
+		font-weight: 400px;
+	}
+
+	.main-bardetails{
+		width: 60%;
+		border-left: 2px solid #eee;
+		border-right: 2px solid #eee;
+		margin-bottom: 10px;
+		height: 76vh;
+		position: fixed;
+		margin-left: 315px;
+		padding: 40px 0 -16px 0;
 	}
