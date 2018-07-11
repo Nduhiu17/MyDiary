@@ -210,3 +210,42 @@ footer{
 	h3{
 		text-align: center;
 	}
+
+	.detailsmaincontainer{
+		margin: 10px;
+		border: 0.1px solid #ccc;
+	}
+
+	.titledetails{
+		/* background-color: #f6f7f8;
+		text-align: center;
+		margin-left: 25%;
+		margin-right: 25%;
+		height: auto; */
+	}
+
+	.detailsmaincontainer >div{
+		margin: 5px;
+	}
+
+
+	.detailseditbutton{
+		background-color: #9fb1b9;
+		font-size:14px;
+		height: 6vh;
+		width: 100%; 
+		color: whitesmoke;
+		font-weight: 200px;
+	}
+
+	.main-bardetails{
+		width: 60%;
+		border-left: 2px solid #eee;
+		border-right: 2px solid #eee;
+		margin-bottom: 10px;
+		height: 76vh;
+		/* overflow-y: scroll; */
+		position: fixed;
+		margin-left: 315px;
+		padding: 40px 0 -16px 0;
+	}
