@@ -271,8 +271,90 @@ footer{
 		color: #9ea7ad;
 	}
 
-	..signupheader >h1{
+	.signupheader >h1{
 		font-weight: 400;
 		color: #a7a7a7;
 		font-size: 40px;
+	}
+	/* .signupleftmain{
+		width: 20%;
+		height: 100px;
+		background-color: green;
+	}
+	.signupcentermain{
+		width: 60%;
+		background-color: blue;
+		height: 100px;
+	}
+	.signuprightmain{
+		background-color: red;
+		width: 20%;
+		height: 100px;
+	} */
+
+
+
+
+	.signupcontainer {
+		overflow: hidden; 
+	}
+	.signupcontainer .signupleftmain {
+		float: left;
+		width: 20%;
+	    box-sizing: border-box;
+	    background-color: #fff;
+	    padding: 10px;
+	
+	}
+	.signupcontainer .signupcentermain {
+		float: left;
+		width: 60%;
+	    box-sizing: border-box;
+	    background-color: #fff;
+	    padding: 10px;
+	}
+	
+	.signupcontainer .signuprightmain {
+		float: left;
+		width: 20%;
+	    box-sizing: border-box;
+	    background-color: #fff;
+	    padding: 10px;
+	}
+	
+	.signupform{
+		margin-top: 25px;
+
+	}
+
+	.inputform{
+		margin: 10px;
+		/* border: 1px solid #e0e0e0; */
+		font-weight: 100;
+		font-size: 25px;
+		margin-left: 20vh;
+		padding-top: 5px;
+		padding-bottom: 5px;
+
+		border: 1px solid #e0e0e0;
+        border-radius: 8px;
+	}
+
+	.terms >p{
+		font-size: 10px;
+		margin-left: 32vh;
+	}
+
+	.signupbutton{
+		background-color:#2283c9;
+		border-radius: 3px;
+		border: 0 none;
+		color: #fff;
+		font-size: 15px;
+		padding: 12px 22px;
+		float: right;
+		margin-right: 32vh;
+		margin-top: 7vh;
+		border-radius: 8px;
+	
 	}
