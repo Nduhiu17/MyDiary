@@ -418,3 +418,18 @@ footer{
 		margin-top: 43px;
 		height:20vh;
 	}
+
+	.reminders{
+    width: 40vh;
+    height: 30vh;
+    margin-left: 46px;
+	/* background-color: gray; */
+	margin-top: 44px;
+	}
+
+	.fontreminders{
+		margin-left: 46px;
+		color: #829399;
+		font-size: 23px;
+
+	}
