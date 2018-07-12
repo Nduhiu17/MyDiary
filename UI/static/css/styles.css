@@ -179,7 +179,7 @@ a {
 footer{
 	width:100%;
 	text-align: center;
-	margin-top: 687px;
+	margin-top: 632px;
 	background-color: #f6f7f8;
 	position: fixed;
 
@@ -259,13 +259,11 @@ footer{
 		color: #9ea7ad;
 		font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 		border-right: 1px solid #ececec;
-		/* font-family: 'Raleway',sans-serif; */
 	}
 
 	.psignup{
 		font-family: inherit;
 		font-size: 12px;
-		/* color: #adadad; */
 		margin-bottom: -95px;
 		margin-left: -53vh;
 		color: #9ea7ad;
@@ -276,24 +274,6 @@ footer{
 		color: #a7a7a7;
 		font-size: 40px;
 	}
-	/* .signupleftmain{
-		width: 20%;
-		height: 100px;
-		background-color: green;
-	}
-	.signupcentermain{
-		width: 60%;
-		background-color: blue;
-		height: 100px;
-	}
-	.signuprightmain{
-		background-color: red;
-		width: 20%;
-		height: 100px;
-	} */
-
-
-
 
 	.signupcontainer {
 		overflow: hidden; 
@@ -366,4 +346,75 @@ footer{
 		color: #777;
 		line-height: 25px;
 
+	}
+
+	.profilemainbar{
+		width: 70%;
+		height: 81vh;
+		border-right:0.1px solid #ccc;
+	}
+
+	.profilesidebar{
+		width: 30%;
+		height: 81vh;
+	}
+
+	.profilecontainer{
+		display: flex;
+		background-color: #fff;
+	}
+
+	.profilebodyheader{
+		margin-left: 25px;
+		height: 31vh;
+		width: 97.5%;
+		border-bottom:0.1px solid #ccc; 
+	}
+
+	.profilepic{
+		height: 5vh;
+		width: 6vh;
+	}
+
+	.journalstatistics{
+		height: 18vh;
+		width: 30vh;
+		/* background-color: red; */
+		margin-top: 58px;
+        margin-left: 46px;
+
+	}
+
+	.pjournals{
+		font-size: 1.3125rem;
+		line-height: 1;
+		text-transform: none;
+		letter-spacing: .01em;
+		font-weight: 400;
+		color: #829399;
+	}
+
+	.totalj{
+		width: 10vh;
+		height: 10vh;;
+	}
+
+	.totalentries{
+		font-size: 23px;
+		margin-top: -8vh;
+		margin-left: 12vh;
+		color: #829399;
+
+	}
+	.profiletitle{
+		margin-top: 33px;
+		font-size: 15px;
+		margin-left: 122px;
+	}
+
+	.profiledetails{
+		margin-left: 35px;
+		width: 45%;
+		margin-top: 43px;
+		height:20vh;
 	}
