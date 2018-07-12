@@ -379,9 +379,9 @@ footer{
 	.journalstatistics{
 		height: 18vh;
 		width: 30vh;
-		/* background-color: red; */
 		margin-top: 58px;
-        margin-left: 46px;
+		margin-left: 46px;
+		border-bottom:0.1px solid #ccc; 
 
 	}
 
@@ -423,7 +423,6 @@ footer{
     width: 40vh;
     height: 30vh;
     margin-left: 46px;
-	/* background-color: gray; */
 	margin-top: 44px;
 	}
 
