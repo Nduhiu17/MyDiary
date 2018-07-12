@@ -217,7 +217,7 @@ footer{
 
 
 	.detailseditbutton{
-		background-color: #9fb1b9;
+	    background-color: #2283c9;
 		font-size:14px;
 		height: 6vh;
 		width: 100%; 
@@ -322,7 +322,7 @@ footer{
 
 	.terms >p{
 		font-size: 10px;
-		margin-left: 32vh;
+		margin-left: -1vh;
 	}
 
 	.signupbutton{
@@ -333,7 +333,7 @@ footer{
 		font-size: 15px;
 		padding: 12px 22px;
 		float: right;
-		margin-right: 33vh;
+		margin-right: 2vh;
 		margin-top: 7vh;
 		border-radius: 8px;
 	
@@ -341,7 +341,7 @@ footer{
 
 	.signuplogin{
 		margin-top: 10vh;
-		margin-left: 65vh;
+		margin-left: 95vh;
 		font-size: 12px;
 		color: #777;
 		line-height: 25px;
@@ -434,7 +434,7 @@ footer{
 
 	input[type=text], select {
 		width: 100%;
-		padding: 12px 20px;
+		padding: 6px 20px;
 		margin: 8px 0;
 		display: inline-block;
 		border: 1px solid #ccc;
