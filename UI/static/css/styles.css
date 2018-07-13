@@ -66,10 +66,10 @@ a {
 @media (min-width: 769px) {
 	.header,
 	.main-nav{
-		display: flex;
+	display: flex;
     }
     
-	.header,{
+	.header{
 		flex-direction: column;
 		align-items: center;
     	 .header{
@@ -488,5 +488,19 @@ footer{
 	margin-left: 0%;
 }
 
-.addform{
+.maintopheader{
+	height:50px;
+    width:100%;
+    position:fixed;
+    top:0;
+    left:0; 
+}
+
+.body-containermain{
+	height:300px; 
+    margin-top: -50vh;
+}
+
+.detailseditbutton a{
+	color:whitesmoke;
 }
