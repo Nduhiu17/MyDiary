@@ -56,7 +56,6 @@ a {
 
 .header {
 	height: auto;
-	background-color: #fff;
 	padding: 10px 30px;
     border-bottom: 5px solid;
 	border-bottom-color: #9fb1b9;
@@ -72,11 +71,6 @@ a {
 	.header{
 		flex-direction: column;
 		align-items: center;
-    	 .header{
-		width: 80%;
-		margin: 0 auto;
-        max-width: 1150px;
-	}
 	}
 
 }
@@ -107,15 +101,7 @@ a {
 	background:transparent;
 } 
 
-.flex-container{
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	padding: 0px;
-	margin-left: 0px;
-	border-bottom: 1px solid #dee5e8;
-	background-color: #f6f7f8;
-}
+
 
 .linavtwo{
 	padding: 0px;
@@ -132,14 +118,6 @@ a {
 
 
 
-.navform {
-	width: 82vh;
-	display: flex;
-	justify-content: flex-end;
-	padding-left: 32px;
-	border: 0%;
-	margin-left: 140px;
-}
 
 .body-container{
 	display: flex;
@@ -151,30 +129,19 @@ a {
 
 .left-bar{
 	width: 20%;
-	height: 69vh;
 }
 
 .main-bar{
 	width: 60%;
-	border-left: 2px solid #eee;
+	 border-left: 2px solid #eee; 
 	border-right: 2px solid #eee;
-	margin-bottom: 10px;
 	height: 76vh;
 	overflow-y: scroll;
-	position: fixed;
-	margin-left: 315px;
-	padding: 40px 0 -16px 0;
 }
 
 .right-bar{
 	width: 20%;
 	background-color: #fff;
-	margin-left: 138vh;
-	margin-right: 5vh;
-	height: 60vh;
-	margin-bottom: 10px;
-	padding: 40px 0 20px 0;
-	
 } 
  
 footer{
@@ -182,7 +149,8 @@ footer{
 	text-align: center;
 	margin-top: 632px;
 	background-color: #f6f7f8;
-	position: fixed;
+	position: absolute;
+    bottom: 0;
 
 }
 
@@ -223,17 +191,6 @@ footer{
 		width: 100%; 
 		color: whitesmoke;
 		font-weight: 400px;
-	}
-
-	.main-bardetails{
-		width: 60%;
-		border-left: 2px solid #eee;
-		border-right: 2px solid #eee;
-		margin-bottom: 10px;
-		height: 76vh;
-		position: fixed;
-		margin-left: 315px;
-		padding: 40px 0 -16px 0;
 	}
 
 	.signupheader{
@@ -348,20 +305,16 @@ footer{
 
 	}
 
-	.profilemainbar{
-		width: 70%;
-		height: 81vh;
-		border-right:0.1px solid #ccc;
-	}
 
 	.profilesidebar{
 		width: 30%;
-		height: 81vh;
 	}
 
 	.profilecontainer{
 		display: flex;
 		background-color: #fff;
+		height: 50%;
+		overflow-y: scroll;
 	}
 
 	.profilebodyheader{
@@ -439,6 +392,7 @@ footer{
 		display: inline-block;
 		border: 1px solid #ccc;
 		border-radius: 4px;
+		background-color: white;
 		box-sizing: border-box;
 	}
 	
@@ -489,16 +443,14 @@ footer{
 }
 
 .maintopheader{
-	height:50px;
     width:100%;
-    position:fixed;
     top:0;
     left:0; 
 }
 
 .body-containermain{
 	height:300px; 
-    margin-top: -50vh;
+	display: flex;
 }
 
 .detailseditbutton a{
