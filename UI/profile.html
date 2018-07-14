@@ -6,24 +6,29 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Profile</title>
     <link rel="stylesheet" href="./static/css/styles.css">
+    <link rel="stylesheet" href="./static/css/header.css">
 </head>
     <body>
-        <header class="header">
-            <h3 class="logo"><a href="home.html">MyDiary</a></h3>
-            <ul class="main-nav">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="signin.html">Log out</a></li>
-            </ul>
-        </header> 
-        <div class="flex-container">
-            <div class="linavtwo"> <a href="add-entry.html">Add Diary</a></div>
-            <div class="linavtwo"><a href="home.html"> Edit Diary</a></div>
-            <div class="linavtwoall"><a href="home.html"> View Dairies</a></div>
-            <div class="navform">
-                <input type="text" placeholder="Search">
+        <div class="maintopheader">
+                <header class="header">
+                    <h3 class="logo"><a href="home.html">MyDiary</a></h3>
+                    <ul class="main-nav">
+                        <li><a href="#">About</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="signin.html">Log out</a></li>
+                    </ul>
+                </header> 
+                <div class="flex-container">
+                    <div class="navtwoitems">
+                        <a href="add-entry.html"><div class="linavtwo">Add Diary</div></a>
+                        <div class="linavtwo">Edit Diary</div>
+                        <div class="linavtwoall">View Dairies</div>
+                    </div>
+                    <div class="navform">
+                        <input class="headernavform" type="text" placeholder="Search">
+                    </div>
+                </div>
             </div>
-        </div>
         <div class="profilecontainer">
             <div class="profilemainbar">
                 <div class="profilebodyheader">
