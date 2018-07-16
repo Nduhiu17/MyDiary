@@ -9,3 +9,9 @@ class Entry():
     def save(self):
         self.entries.append(self)
 
+    @classmethod
+    def get_entry(cls,id):
+        entry = cls.entries[id]
+        print("##############################################")
+        print(entry.description)
+        return entry
