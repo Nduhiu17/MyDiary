@@ -3,3 +3,11 @@ virtual/
 .idea/
 *.pyc
 .pytest_cache/
+
+
+../.idea/MyDiary.iml
+../.idea/markdown-navigator/
+../.idea/misc.xml
+../.idea/modules.xml
+../.idea/workspace.xml
+
