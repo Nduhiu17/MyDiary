@@ -17,3 +17,5 @@ class TestEntry(unittest.TestCase):
         new_entry = self.new_entry
         new_entry.save()
         self.assertEqual(len(Entry.entries), 2)
+
+

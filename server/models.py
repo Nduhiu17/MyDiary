@@ -9,3 +9,4 @@ class Entry():
     def save(self):
         self.entries.append(self)
 
+   
