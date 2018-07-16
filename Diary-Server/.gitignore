@@ -1,0 +1,4 @@
+vitual/
+*__pycache__/
+.idea/
+*.pyc
