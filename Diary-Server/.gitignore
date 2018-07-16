@@ -1,5 +1,0 @@
-virtual/
-*__pycache__/
-.idea/
-*.pyc
-.pytest_cache/
