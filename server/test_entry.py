@@ -18,4 +18,5 @@ class TestEntry(unittest.TestCase):
         new_entry.save()
         self.assertEqual(len(Entry.entries), 2)
 
-
+    def test_get_all_entries(self):
+        self.assertEqual(len(Entry.get_all_entries()), 1)

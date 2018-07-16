@@ -9,4 +9,6 @@ class Entry():
     def save(self):
         self.entries.append(self)
 
-   
+    @classmethod
+    def get_all_entries(cls):
+        return cls.entries
