@@ -17,9 +17,10 @@
         </ul>
     </header> 
     <div class="flex-container">
-        <div class="linavtwo"><a href="add-entry.html">Add Diary</a></div>
-        <div class="linavtwo"><a href="home.html">Edit Diary</a></div>
-        <div class="linavtwoall"> <a href="home.html">View Dairies</a></div>
+        <a href="add-entry.html"><div class="linavtwo">Add Diary</div></a>
+        <a href=""></a>
+        <div class="linavtwo"><a href="modify-entry.html"> Edit Diary</a></div>
+        <div class="linavtwoall"><a href="home.html">View Dairies</a></div>
         <div class="navform">
             <input type="text" placeholder="Search">
         </div>
@@ -29,21 +30,17 @@
         </div>
         <div class="main-bardetails">
                  <div class="detailsmaincontainer">
-                     <div class="titledetails">
-                         <h3>Entry Title</h3>
+                     <div class="addheader">
                      </div>
-                     <div class="detailsbody">
-                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore m
-                         agna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                     </div>
-                     <div class="detailsusername">
-                         <p>Was posted by @username</p>
-                     </div>
-                     <div class="detailsfooter">
-                         Posted on 11th July 2018
-                     </div>
-                     <button class="detailseditbutton">
-                        <a href="modify-entry.html">Modify</a> 
+                    <form class="addform">
+                        <label for="title">Title</label>
+                        <input type="text"  name="title" placeholder="title">
+                        Description
+                    <textarea class="textarea" rows="4" cols="50">
+                    </textarea>
+                    </form>
+                     <button class="addentrybutton">
+                         Add
                      </button>
                  </div>               
         </div>
