@@ -147,11 +147,7 @@ a {
 footer{
 	width:100%;
 	text-align: center;
-	margin-top: 632px;
 	background-color: #f6f7f8;
-	position: absolute;
-    bottom: 0;
-
 }
 
 .text {
@@ -197,7 +193,7 @@ footer{
 		width: 100%;
 		background-color: #f7f7f7;
 		border-bottom: 1px solid #ececec;
-		height: 12vh;
+		/* height: 12vh; */
 		padding: 75px 0;
 	}
 
@@ -298,7 +294,6 @@ footer{
 
 	.signuplogin{
 		margin-top: 10vh;
-		margin-left: 95vh;
 		font-size: 12px;
 		color: #777;
 		line-height: 25px;
@@ -449,7 +444,6 @@ footer{
 }
 
 .body-containermain{
-	height:300px; 
 	display: flex;
 }
 
