@@ -1,6 +1,5 @@
 import unittest
 from models import Entry
-
 class TestEntry(unittest.TestCase):
     def tearDown(self):
         Entry.entries = []
