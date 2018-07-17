@@ -21,7 +21,6 @@ class Entry():
         return entry
 
     @classmethod
-    def modify_entry(cls, id):
-        entry_to_modify = cls.entries[id]
-
-        return entry_to_modify
+    def modify_entry(cls, id, modified_object):
+        cls.entries[id] = modified_object
+        return modified_object
