@@ -24,3 +24,9 @@ class TestEntry(unittest.TestCase):
     def test_get_entry(self, id=0):
         entry = Entry.get_entry(id)
         self.assertEqual(entry.title, "graduation ceremony")
+
+    def test_save_multiple_entries(self):
+        self.new_entry.save()
+        test_entry = Entry("world cup Russia", "it was awesome attending", " ")
+        test_entry.save()
+        self.assertEqual(len(Entry.entries), 3)
