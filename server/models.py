@@ -12,3 +12,10 @@ class Entry():
     @classmethod
     def get_all_entries(cls):
         return cls.entries
+
+    @classmethod
+    def get_entry(cls, id):
+        entry = cls.entries[id]
+        print("##############################################")
+        print(entry.description)
+        return entry
