@@ -2,6 +2,7 @@
   "test_entry.py::TestEntry::test_entry_init",
   "test_entry.py::TestEntry::test_get_all_entries",
   "test_entry.py::TestEntry::test_get_entry",
+  "test_entry.py::TestEntry::test_modify_entry",
   "test_entry.py::TestEntry::test_save",
   "test_entry.py::TestEntry::test_save_multiple_entries"
 ]

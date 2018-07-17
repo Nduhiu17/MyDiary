@@ -30,3 +30,14 @@ class TestEntry(unittest.TestCase):
         test_entry = Entry("world cup Russia", "it was awesome attending", " ")
         test_entry.save()
         self.assertEqual(len(Entry.entries), 3)
+
+
+    def test_modify_entry(self,id=0):
+        entry_to_modify = Entry.get_entry(id)
+        entry_to_modify=Entry.modify_entry(id)
+        entry_to_modify.title = "masai mara visit"
+        entry_to_modify.description = "it was astonishing"
+        entry_to_modify.date_created = " "
+        self.assertEqual(entry_to_modify.title,"masai mara visit")
+        self.assertEqual(entry_to_modify.date_created, " ")
+
