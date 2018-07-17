@@ -19,3 +19,9 @@ class Entry():
         print("##############################################")
         print(entry.description)
         return entry
+
+    @classmethod
+    def modify_entry(cls, id):
+        entry_to_modify = cls.entries[id]
+
+        return entry_to_modify
