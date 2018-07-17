@@ -81,4 +81,26 @@
 
 
 
+@media (max-width: 726px){
+    .signupheader{
+        display: flex;
+        flex-direction: column;
+        /* justify-content: flex-center; */
+        align-items: center;
+        padding: 0px;
+        margin-left: 0px;
+        border-bottom: 1px solid #dee5e8;
+        background-color:whitesmoke;
+    }
+}
+
+@media (max-width: 726px){
+    .signupcontainer{
+        display: flex;
+        flex-direction: column;
+        height: 80vh;
+        padding-left: 15vh;
+   
+    }
+}
 
