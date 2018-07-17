@@ -1,3 +1,10 @@
 virtual/
-__pycache__/
+*__pycache__/
 .idea/
+*.pyc
+.pytest_cache/
+.cache
+pytest_cache
+
+src/_pytest/_version.py
+
