@@ -20,3 +20,7 @@ class TestEntry(unittest.TestCase):
 
     def test_get_all_entries(self):
         self.assertEqual(len(Entry.get_all_entries()), 1)
+
+    def test_get_entry(self, id=0):
+        entry = Entry.get_entry(id)
+        self.assertEqual(entry.title, "graduation ceremony")
