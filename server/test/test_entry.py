@@ -1,15 +1,18 @@
 import unittest
-from models import Entry
+from ..models.models import Entry
+
+
 class TestEntry(unittest.TestCase):
+
     def tearDown(self):
         Entry.entries = []
 
     def test_entry_init(self):
-        new_entry = Entry(title="graduation ceremony", description="it was nice attending.",date_created=" ")
+        new_entry = Entry(title="graduation ceremony", description="it was nice attending.", date_created=" ")
         self.assertEqual(new_entry.title, "graduation ceremony")
 
     def setUp(self):
-        self.new_entry = Entry(title="graduation ceremony",description="it was nice attending",date_created=" ")
+        self.new_entry = Entry(title="graduation ceremony", description="it was nice attending", date_created=" ")
         self.new_entry.save()
 
     def test_save(self):
@@ -32,10 +35,9 @@ class TestEntry(unittest.TestCase):
 
     def test_modify_entry(self, id=0):
         entry_to_modify = Entry.get_entry(id)
-        entry_to_modify.title = "masai mara visit"
+        entry_to_modify.title = "tech open day"
         entry_to_modify.description = "it was astonishing"
         entry_to_modify.date_created = " "
         modified_entry = Entry.modify_entry(id, entry_to_modify)
-        self.assertEqual(modified_entry.title, "masai mara visit")
+        self.assertEqual(modified_entry.title, "tech open day")
         self.assertEqual(modified_entry.date_created, " ")
-

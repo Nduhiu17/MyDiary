@@ -11,7 +11,12 @@ class Entry():
 
     @classmethod
     def get_all_entries(cls):
-        return cls.entries
+        entries = cls.entries
+        my_entries_json = []
+        for entry in entries:
+            # entry.__dict__.append(my_entries_json)
+            my_entries_json.append(entry.__dict__)
+        return my_entries_json
 
     @classmethod
     def get_entry(cls, id):
