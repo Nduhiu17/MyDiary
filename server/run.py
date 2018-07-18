@@ -1,7 +1,8 @@
-from flask import Flask, json
-from flask_restful import Resource, Api
+from flask import Flask
+from flask_restful import Resource, Api, reqparse
+# from server.models import Entry
+from models import Entry
 
-from .models import Entry
 
 app = Flask(__name__)
 api = Api(app)
@@ -16,20 +17,25 @@ def seeding():
     new_entry.save()
 
 
-class EntryResource(Resource):
+class EntrylistResource(Resource):
     def get(self):
         results = Entry.get_all_entries()
         print("###################################")
-        print(results)
+        # print(results[0])
         return results
 
-   # def get_by_id(self):
-   #     result = Entry.get_entry()
+
+class EntryResource(Resource):
+    def get(self, id):
+        result = Entry.get_entry(id)
+        result_jsonified = result.__dict__
+        print(result)
+        return result_jsonified
 
 
+api.add_resource(EntryResource, '/api/v1/entries/<int:id>', endpoint='entries')
+api.add_resource(EntrylistResource, '/api/v1/entries')
 
-api.add_resource(EntryResource, '/api/v1/entries')
-# api.add_resource(EntryResource, '/api/v1/entries/id')
 
 if __name__ == '__main__':
     seeding()

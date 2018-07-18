@@ -19,10 +19,11 @@ class Entry():
         return my_entries_json
 
     @classmethod
-    def get_entry(cls, id):
-        entry = cls.entries[id]
+    def get_entry(cls, entry_id):
+        entry = cls.entries[entry_id]
+        # entry_jsonified = entry.__dict__
         print("##############################################")
-        print(entry.description)
+        # print(entry_jsonified)
         return entry
 
     @classmethod
