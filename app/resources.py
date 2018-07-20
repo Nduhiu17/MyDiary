@@ -45,3 +45,10 @@ class EntryResource(Resource):
         print(result_jsonified)
         return result_jsonified
 
+
+class HelloAndela(Resource):
+    def get(self):
+        all_entrys = Entry.get_all_entries()
+        return {'Hello Andela': 'Welcome to my second challege product'}
+
+

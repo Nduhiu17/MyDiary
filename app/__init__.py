@@ -2,7 +2,8 @@ from flask import Flask
 from flask_restful import Api
 from flask_marshmallow import Marshmallow
 from .models import Entry
-from .resources import EntrylistResource, EntryResource
+from .resources import EntrylistResource, EntryResource,HelloAndela
+
 
 app = Flask(__name__)
 
@@ -13,6 +14,7 @@ def create_app(config_filename):
     api = Api(app)
     api.add_resource(EntrylistResource, '/api/v1/entries/', methods=['POST', 'GET'])
     api.add_resource(EntryResource, '/api/v1/entries/<int:id>', endpoint='entry')
+    api.add_resource(HelloAndela, '/')
     return app
 
 def seeding():
