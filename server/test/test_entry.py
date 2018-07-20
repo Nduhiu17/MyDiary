@@ -1,6 +1,6 @@
 import unittest
+from ..resources.models import Entry
 
-from models import Entry
 
 
 class TestEntry(unittest.TestCase):

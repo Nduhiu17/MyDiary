@@ -1,12 +1,21 @@
 from urllib import response
 from flask import Flask, request, abort
 from flask_restful import Resource, Api, reqparse
-
-from models import Entry
+from .resources.models import Entry
+from .resources.entry import EntrylistResource, EntryResource
 
 app = Flask(__name__)
 
 api = Api(app)
+
+
+def create_app(config_filename):
+    app = Flask(__name__)
+    app.config.from_object(config_filename)
+    api = Api(app)
+    api.add_resource(EntrylistResource, '/api/v1/entries/', methods=['POST', 'GET'])
+    api.add_resource(EntryResource, '/api/v1/entries/<int:id>', endpoint='entry')
+    return app
 
 
 def seeding():
@@ -20,52 +29,7 @@ def seeding():
     new_entry.save()
 
 
-class EntrylistResource(Resource):
-    def __init__(self):
-        self.reqparse = reqparse.RequestParser()
-        self.reqparse = reqparse.RequestParser()
-        self.reqparse.add_argument(
-            'title',
-            required=True,
-            help='No title provided',
-            location=['form', 'json']
-        )
-        self.reqparse.add_argument(
-            'description',
-            required=True,
-            help='No description provided',
-            location=['form', 'json']
-        )
-
-    def get(self):
-        results = Entry.get_all_entries()
-        print("###################################")
-        # print(results[0])
-        return results
-
-    def post(self):
-        if not request.json:
-            abort(400)
-        entry = Entry(title=request.json['title'], description=request.json['description'],
-                      date_created=request.json['date_created'])
-        print("hello andela")
-        print(type(entry))
-        entry.save()
-        entry_justified = entry.__dict__
-        return {"status": "Success", "data": entry_justified}, 201
-
-
-class EntryResource(Resource):
-    def get(self, id):
-        result = Entry.get_entry(id)
-        result_jsonified = result.__dict__
-        print(result_jsonified)
-        return result_jsonified
-
-
-api.add_resource(EntrylistResource, '/api/v1/entries/', methods=['POST', 'GET'])
-api.add_resource(EntryResource, '/api/v1/entries/<int:id>', endpoint='entry')
-
 if __name__ == '__main__':
+    app = create_app("config")
     seeding()
-    app.run(debug=True)
+    app.run()
