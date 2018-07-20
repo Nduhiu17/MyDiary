@@ -1,13 +1,14 @@
 import json
 import unittest
-
+from app.models import Entry
+from app import app
 
 
 class DiarylistTestCase(unittest.TestCase):
     def setUp(self):
         self.new_entry = Entry(title="graduation ceremony", description="it was nice attending", date_created=" ")
         self.new_entry.save()
-        self.app = run.app
+        self.app = app
         self.client = self.app.test_client()
 
     def test_api_get_all_diaryentries(self):
