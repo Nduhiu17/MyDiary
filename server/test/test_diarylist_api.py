@@ -1,7 +1,6 @@
 import json
 import unittest
-from ..resources.models import Entry
-from .. import run
+
 
 
 class DiarylistTestCase(unittest.TestCase):

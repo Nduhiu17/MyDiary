@@ -1,14 +1,10 @@
-from urllib import response
-from flask import Flask, request, abort
-from flask_restful import Resource, Api, reqparse
-# from .resources.models import Entry
-# from .resources.entry import EntrylistResource, EntryResource
-from models import Entry
-from resources.entry import EntryResource, EntrylistResource
+from flask import Flask
+from flask_restful import Api
+from flask_marshmallow import Marshmallow
+from .models import Entry
+from .resources import EntrylistResource, EntryResource
 
 app = Flask(__name__)
-
-api = Api(app)
 
 
 def create_app(config_filename):
@@ -18,7 +14,6 @@ def create_app(config_filename):
     api.add_resource(EntrylistResource, '/api/v1/entries/', methods=['POST', 'GET'])
     api.add_resource(EntryResource, '/api/v1/entries/<int:id>', endpoint='entry')
     return app
-
 
 def seeding():
     new_entry = Entry("got guitar", "second hand guitar yamaha", '234567')
@@ -31,7 +26,9 @@ def seeding():
     new_entry.save()
 
 
-if __name__ == '__main__':
-    app = create_app("config")
-    seeding()
-    app.run()
+app.debug = True
+ma = Marshmallow(app)
+api = Api(app)
+app = create_app('config')
+
+from . import resources, models
