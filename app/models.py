@@ -14,16 +14,12 @@ class Entry():
         entries = cls.entries
         my_entries_json = []
         for entry in entries:
-            # entry.__dict__.append(my_entries_json)
             my_entries_json.append(entry.__dict__)
         return my_entries_json
 
     @classmethod
     def get_entry(cls, entry_id):
         entry = cls.entries[entry_id]
-        # entry_jsonified = entry.__dict__
-        print("##############################################")
-        # print(entry_jsonified)
         return entry
 
     @classmethod
