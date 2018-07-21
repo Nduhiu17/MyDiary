@@ -46,6 +46,14 @@ class EntryResource(Resource):
         return result_jsonified
 
 
+   
+
+# class EntryResource(Resource):
+
+
+
+
+
 class HelloAndela(Resource):
     def get(self):
         all_entrys = Entry.get_all_entries()
