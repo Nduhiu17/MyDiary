@@ -1,3 +1,1 @@
-SECRET_KEY = 'thi-should-be-secret'
-
-python3.6 manage.py server
+python3.6 api.py server

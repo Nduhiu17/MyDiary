@@ -1,7 +1,8 @@
 import json
 import unittest
 from app.models import Entry
-from app import app
+from api import app
+
 
 
 class DiarylistTestCase(unittest.TestCase):

@@ -1,11 +1,10 @@
-# This file contains most of the configuration variables that your app needs.
-from datetime import timedelta
+import datetime
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config(object):
-    REMEMBER_COOKIE_DURATION = timedelta(days=14)
+    REMEMBER_COOKIE_DURATION = datetime.timedelta(days=14)
     DEBUG = True
     TESTING = True
     CSRF_ENABLED = True

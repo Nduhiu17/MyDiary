@@ -6,20 +6,16 @@ from flask_restful import Resource, Api, reqparse
 # from app import create_app,seeding
 # from app import EntrylistResource, EntryResource, HelloAndela, Entry
 from app.models import Entry
-from app.resources import EntrylistResource, EntryResource, HelloAndela
+from app.resources import EntrylistResource, EntryResource, Hello
 
 app = Flask(__name__)
 
 api = Api(app)
 
-# def create_app(config_filename):
-# app = Flask(__name__)
-# app.config.from_object(config_filename)
-# api = Api(app)
 api.add_resource(EntrylistResource, '/api/v1/entries/', methods=['POST', 'GET'])
 api.add_resource(EntryResource, '/api/v1/entries/<int:id>', endpoint='entry')
-api.add_resource(HelloAndela, '/')
-    # return app
+api.add_resource(Hello, '/')
+
 
 def seeding():
     new_entry = Entry("got guitar", "second hand guitar yamaha", '234567')
@@ -31,8 +27,8 @@ def seeding():
     new_entry = Entry("test", "its working", '252567')
     new_entry.save()
 
+
 seeding()
-# if __name__ == '__main__':
-#     # app = create_app("config")
-#     seeding()
-#     app.run()
+if __name__ == '__main__':
+    seeding()
+    app.run()
