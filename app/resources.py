@@ -1,23 +1,7 @@
-from urllib import response
-from flask import Flask, request, abort
 from flask_restful import Resource, Api, reqparse
-
-from models import Entry
-
-app = Flask(__name__)
-
-api = Api(app)
-
-
-def seeding():
-    new_entry = Entry("got guitar", "second hand guitar yamaha", '234567')
-    new_entry.save()
-    new_entry = Entry("bought a laptop", "second hand from olx seller", '244567')
-    new_entry.save()
-    new_entry = Entry("learnt react", "learnt how to consume apis with react", '254567')
-    new_entry.save()
-    new_entry = Entry("test", "its working", '252567')
-    new_entry.save()
+from flask import Flask, request, abort,jsonify
+from flask_restful import Resource, Api
+from .models import Entry
 
 
 class EntrylistResource(Resource):
@@ -40,7 +24,6 @@ class EntrylistResource(Resource):
     def get(self):
         results = Entry.get_all_entries()
         print("###################################")
-        # print(results[0])
         return results
 
     def post(self):
@@ -63,9 +46,9 @@ class EntryResource(Resource):
         return result_jsonified
 
 
-api.add_resource(EntrylistResource, '/api/v1/entries/', methods=['POST', 'GET'])
-api.add_resource(EntryResource, '/api/v1/entries/<int:id>', endpoint='entry')
+class Hello(Resource):
+    def get(self):
+        all_entrys = Entry.get_all_entries()
+        return {'Hello'}
 
-if __name__ == '__main__':
-    seeding()
-    app.run(debug=True)
+

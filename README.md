@@ -1,43 +1,62 @@
-# **MyDiary**
+### MyDiary-API
+[![Coverage Status](https://coveralls.io/repos/github/Nduhiu17/MyDiary/badge.svg?branch=master)](https://coveralls.io/github/Nduhiu17/MyDiary?branch=master)
 
-This is an online journal web application UI where users can create and login to their account,add an entry to their Diary.The user can view and edit the entries in the diary.The application sends notification to users prompting them to add an entry to their diary.  
 
-# **Development**
+[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
 
-This application was developed using HTML5 and CSS3
+[![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)
 
-# **Feautures**
 
-Users application user can create a diary,view all diary entries and view a diary details
+#### Description
+It is an API that enables CRUD methods for creating a Diary entry where users can can pen dwn their feelings
+### Development
 
-# **Getting Started**
+Clone the repository: 
 
-### **1. Prerequisities**
+```https://github.com/Nduhiu17/MyDiary.git```
 
-You need a web browser installed on your machine e.g Google Chrome,MOzilla Firefox,Safari,Internet exploler.
+Check out to the server branch by:
+$git checkout develop
 
-### **2.Installation**
+Ensure you have the following:
 
-- Make a directory of the project and initialize git.
-- Clone the project repository from the following link
-    $git clone............................................
+```
+1. postgres
+2. python3.6
+3. Flask
+4. Postman
+```
 
-- Navigate to the project folder "Front-End" and open index.html on your browser.
-    $cd Front-End
+Create a virtualenv and activate it by running the following commands.
+$python3.6 -m venv virtual
+$source virtual/bin/activate
 
-### **Languages**
-      This UI was created by HTML5 and CSS3.
+### Dependencies
+- Install the project dependencies:
+> $ pip install -r requirements.txt
 
-### **Versioning**
-       Git is used for versioning.Click "here" to see the versions available.
+You can run the tests by running:
 
-### **Authors**
+$```pytest```
 
-      Antony Nduhiu
+After setting up the above. Run:
 
-### **Acknowledgement**
+```python api.py.py```
 
-     Ann Mukundi *Project Instructor*
+Test the endpoints registered on `api.py` on Postman:
 
-### **Licence**
-    This application is licenced under GNU licence
+1.End point to get all entries
+
+  ```https://diary-server.herokuapp.com/api/v1/entries/```
+
+2.End point to get a single entry
+ 
+ ``` https://diary-server.herokuapp.com/api/v1/entries/0```
+
+3.End point to add an entry.
+
+  ```https://diary-server.herokuapp.com/api/v1/entries/```
+#### Author
+
+Antony Nduhiu
+
