@@ -1,8 +1,9 @@
 import json
 import unittest
-from app.models import Entry
+from flask import jsonify
+# from api import app
 from api import app
-
+from app.models import Entry
 
 
 class DiarylistTestCase(unittest.TestCase):
@@ -20,7 +21,7 @@ class DiarylistTestCase(unittest.TestCase):
         get_all_response = self.client.get('/api/v1/entries/')
         self.assertEqual(type(json.loads(get_all_response.get_data().decode())), list)
 
-    def test_api_get_diaryentry(self):
+    def test_api_get_diaryentry(self, id=0):
         get_response = self.client.get('api/v1/entries/0')
         self.assertEqual(get_response.status_code, 200)
 
@@ -44,21 +45,19 @@ class DiarylistTestCase(unittest.TestCase):
         print(len(entry))
         self.assertEqual(len(entry), len(entry))
 
-    # def test_put_entry(self):
-    #     entry = {'title': 'date created', 'description': 'watched the latest movie', 'date_created': ' '}
-    #     response = self.client.post('api/v1/entries/', data=json.dumps(entry),
-    #                                 headers={'Content-Type': 'application' '/json'})
-    #     self.assertEqual(response.status_code, 201)
-    #     # entry.id = json.loads(response.get_data(as_text=True))['entry.id']
-    #     #
-    #     entry2 = {'title': 'date created and save', 'description': 'watched the latest movie', 'date_created': ' '}
-    #     response2 = self.client.put('api/v1/entries/1', data=json.dumps(entry2),
-    #                                  headers={'Content-Type': 'application' '/json'})
-        # self.assertEqual(response2.status_code, 201)
-        # self.assertIn('and save', str(response2.data))
-
-    # def test_put_entry(self):
-        # entry_to_modify = self.client.get('api/v1/entries/0')
-        # entry_to_modify = self.client.put('entry_to_modify', data=json.dumps(entry_to_modify), headers={'Content-Type': 'application' '/json'})
-        # self.assertIn('for music', str(entry_to_modify.data))
-
+    def test_modify_entry(self):
+        entry = {"title": "got a guiter", "description": "a good guiter for music", "date_created": "3226562"}
+        response = self.client.post('api/v1/entries/', data=json.dumps(entry),
+                                    headers={'Content-Type': 'application/json'})
+        self.assertEqual(response.status_code, 201)
+        item = {"title": "got a guiter", "description": "a good guiter for music", "date_created": "322656"}
+        response1 = self.client.post('api/v1/entries/', data=json.dumps(item),
+                                     headers={'Content-Type': 'application/json'})
+        self.assertEqual(response1.status_code, 201)
+        update = {"title": "got a guiter ", "description": "brand new guiter for playing music practice",
+                  "date_created": "2215652"}
+        response2 = self.client.put('api/v1/entries/0', data=json.dumps(update),
+                                    headers={'Content-Type': 'application/json'})
+        print("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
+        print(response2)
+        self.assertEqual(response2.status_code, 201)

@@ -4,7 +4,7 @@ from flask_restful import Resource, Api
 from .models import Entry
 
 
-class EntrylistResource(Resource):
+class EntryResource(Resource):
     def __init__(self):
         self.reqparse = reqparse.RequestParser()
         self.reqparse = reqparse.RequestParser()
@@ -23,7 +23,6 @@ class EntrylistResource(Resource):
 
     def get(self):
         results = Entry.get_all_entries()
-        print("###################################")
         return results
 
     def post(self):
@@ -38,7 +37,18 @@ class EntrylistResource(Resource):
         return {"status": "Success", "data": entry_justified}, 201
 
 
-class EntryResource(Resource):
+    def put(self,id):
+        entry = Entry.get_entry(id)
+        entry.title =  request.json.get('title')
+        entry.description =  request.json.get('description')
+        entry.date_created = request.json.get('date_created')
+        print("gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg")
+        print(entry)
+        entry.save()
+        entry_jsony = entry.__dict__
+        return {"status": "Success", "data":entry_jsony}, 201
+  
+class OneEntryResource(Resource):
     def get(self, id):
         result = Entry.get_entry(id)
         result_jsonified = result.__dict__

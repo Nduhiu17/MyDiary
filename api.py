@@ -1,19 +1,16 @@
-from urllib import response
-from flask import Flask, request, abort
-from flask_restful import Resource, Api, reqparse
-# from app.models import Entry
-# from app.resources import EntryResource, EntrylistResource, HelloAndela
-# from app import create_app,seeding
-# from app import EntrylistResource, EntryResource, HelloAndela, Entry
+from flask import Flask
+from flask_restful import Api
+
 from app.models import Entry
-from app.resources import EntrylistResource, EntryResource, Hello
+from app.resources import EntryResource, OneEntryResource, Hello
 
 app = Flask(__name__)
 
 api = Api(app)
 
-api.add_resource(EntrylistResource, '/api/v1/entries/', methods=['POST', 'GET'])
-api.add_resource(EntryResource, '/api/v1/entries/<int:id>', endpoint='entry')
+api.add_resource(OneEntryResource, '/api/v1/entries/<int:id>')
+api.add_resource(EntryResource, '/api/v1/entries/', '/api/v1/entries/', '/api/v1/entries/<int:id>')
+
 api.add_resource(Hello, '/')
 
 
@@ -31,4 +28,4 @@ def seeding():
 seeding()
 if __name__ == '__main__':
     seeding()
-    app.run()
+    app.run(debug=True, port=5000)
