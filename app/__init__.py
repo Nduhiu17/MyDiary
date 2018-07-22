@@ -3,7 +3,7 @@ from flask_restplus import Api
 
 from app.models import Entry
 from app.resources import EntryResource
-from app.resources import EntryResource, OneEntryResource, Hello
+from app.resources import EntryResource, OneEntryResource
 
 app = Flask(__name__)
 

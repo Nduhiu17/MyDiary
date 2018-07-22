@@ -3,6 +3,8 @@
 [![Build Status](https://travis-ci.org/travis-ci/travis-web.svg?branch=master)](https://travis-ci.org/travis-ci/travis-web)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)
+[![PEP8](https://img.shields.io/badge/code%20style-pep8-orange.svg)](https://www.python.org/dev/peps/pep-0008/)
+
 
 
 #### Description
@@ -58,6 +60,10 @@ Test the endpoints registered on `api.py` on Postman:
 4.End point to update an entry.
 
   ```https://diary-server.herokuapp.com/api/v1/entries/2```
+
+4.End point to delete an entry.
+
+  ```https://diary-server.herokuapp.com/api/v1/entries/1```
 
 
 #### Author
