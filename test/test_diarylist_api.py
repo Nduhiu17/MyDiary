@@ -1,8 +1,7 @@
 import json
 import unittest
-from flask import jsonify
-# from api import app
-from api import app
+
+from app import app
 from app.models import Entry
 
 
