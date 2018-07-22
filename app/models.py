@@ -26,3 +26,14 @@ class Entry:
     def modify_entry(cls, id, modified_object):
         cls.entries[id] = modified_object
         return modified_object
+
+    def delete(self):
+        Entry.entries.remove(self)
+
+    
+    @classmethod
+    def entry_exists(cls,title):
+        for entry in cls.entries:
+            if entry.title == title:
+                return True
+        return False
