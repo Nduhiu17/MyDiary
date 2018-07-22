@@ -59,6 +59,10 @@ Test the endpoints registered on `api.py` on Postman:
 
   ```https://diary-server.herokuapp.com/api/v1/entries/2```
 
+4.End point to delete an entry.
+
+  ```https://diary-server.herokuapp.com/api/v1/entries/1```
+
 
 #### Author
 
