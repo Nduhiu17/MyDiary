@@ -61,3 +61,12 @@ class DiarylistTestCase(unittest.TestCase):
         print("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
         print(response2)
         self.assertEqual(response2.status_code, 201)
+
+    def test_delete_entry(self):
+         entry = {"title": "title for delete", "description": "this is content to delete", "date_created": "23256532"}
+         response = self.client.post('api/v1/entries/', data=json.dumps(entry), headers={'Content-Type': 'application/json'})
+         self.assertEqual(response.status_code, 201)
+         response2 = self.client.delete('api/v1/entries/1', headers={'Content-Type': 'application/json'})
+         self.assertEqual(response2.status_code, 200)
+
+  

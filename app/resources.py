@@ -47,6 +47,12 @@ class EntryResource(Resource):
         entry.save()
         entry_jsony = entry.__dict__
         return {"status": "Success", "data":entry_jsony}, 201
+
+    def delete(self,id):
+        entry = Entry.get_entry(id)
+        entry.delete()
+        entry.save()
+        return {"status": "Success"}, 200
   
 class OneEntryResource(Resource):
     def get(self, id):

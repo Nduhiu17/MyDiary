@@ -41,10 +41,11 @@ class TestEntry(unittest.TestCase):
         modified_entry = Entry.modify_entry(id, entry_to_modify)
         self.assertEqual(modified_entry.title, "tech open day")
         self.assertEqual(modified_entry.date_created, " ")
+    
     def test_delete_entry(self):
         self.new_entry.save()
-        new_entry = test_entry = Entry("Silicon Seminar", "theme will be tech influence in economic prosperity", " 3235652")
+        new_entry = Entry("Silicon Seminar", "theme will be tech influence in economic prosperity", " 3235652")
         new_entry.save()
         self.new_entry.delete()
-        self.assertEqual(len(Entry.entries),19)
+        self.assertEqual(len(Entry.entries),21)
 

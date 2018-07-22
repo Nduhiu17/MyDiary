@@ -28,4 +28,4 @@ def seeding():
 seeding()
 if __name__ == '__main__':
     seeding()
-    app.run(debug=True, port=5000)
+    app.run()

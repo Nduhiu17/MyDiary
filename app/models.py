@@ -28,5 +28,5 @@ class Entry():
         return modified_object
 
     def delete(self):
-                Entry.entries.remove(self)
+        Entry.entries.remove(self)
 
