@@ -1,26 +1,10 @@
-from flask_restful import Resource, Api, reqparse
-from flask import Flask, request, abort,jsonify
-from flask_restful import Resource, Api
+from flask import request, abort
+from flask_restplus import Resource
+
 from .models import Entry
 
 
 class EntryResource(Resource):
-    def __init__(self):
-        self.reqparse = reqparse.RequestParser()
-        self.reqparse = reqparse.RequestParser()
-        self.reqparse.add_argument(
-            'title',
-            required=True,
-            help='No title provided',
-            location=['form', 'json']
-        )
-        self.reqparse.add_argument(
-            'description',
-            required=True,
-            help='No description provided',
-            location=['form', 'json']
-        )
-
     def get(self):
         results = Entry.get_all_entries()
         return results
@@ -36,18 +20,18 @@ class EntryResource(Resource):
         entry_justified = entry.__dict__
         return {"status": "Success", "data": entry_justified}, 201
 
-
-    def put(self,id):
+    def put(self, id):
         entry = Entry.get_entry(id)
-        entry.title =  request.json.get('title')
-        entry.description =  request.json.get('description')
+        entry.title = request.json.get('title')
+        entry.description = request.json.get('description')
         entry.date_created = request.json.get('date_created')
         print("gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg")
         print(entry)
         entry.save()
         entry_jsony = entry.__dict__
-        return {"status": "Success", "data":entry_jsony}, 201
-  
+        return {"status": "Success", "data": entry_jsony}, 201
+
+
 class OneEntryResource(Resource):
     def get(self, id):
         result = Entry.get_entry(id)
@@ -58,7 +42,4 @@ class OneEntryResource(Resource):
 
 class Hello(Resource):
     def get(self):
-        all_entrys = Entry.get_all_entries()
         return {'Hello'}
-
-
