@@ -8,6 +8,7 @@
 
 
 
+
 #### Description
 It is an API that enables CRUD methods for creating a Diary entry where users can can pen dwn their feelings
 ### Development
@@ -29,8 +30,9 @@ Ensure you have the following:
 ```
 
 Create a virtualenv and activate it by running the following commands.
-$python3.6 -m venv virtual
-$source virtual/bin/activate
+>$python3.6 -m venv virtual
+
+>$source virtual/bin/activate
 
 ### Dependencies
 - Install the project dependencies:
@@ -67,12 +69,15 @@ Test the endpoints registered  on Postman:
   ```https://diary-server.herokuapp.com/api/v1/entries/1```
 
 ### User interface
+
 Please click on the link below to view the user interface design
-  ```https://nduhiu17.github.io/MyDiary/```
+
+  >```https://nduhiu17.github.io/MyDiary/```
 
 
-###Licence
-```This application is licenced under GNU licence```
+### Licence
+
+>```This application is licenced under GNU licence```
 
 
 #### Author
