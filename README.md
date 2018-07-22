@@ -37,9 +37,9 @@ You can run the tests by running:
 
 $```pytest```
 
-After setting up the above. Run:
+After setting up the above. Run the application by:
 
-```python api.py.py```
+```FLASK_APP=app flask run``
 
 Test the endpoints registered on `api.py` on Postman:
 
@@ -54,6 +54,12 @@ Test the endpoints registered on `api.py` on Postman:
 3.End point to add an entry.
 
   ```https://diary-server.herokuapp.com/api/v1/entries/```
+
+4.End point to update an entry.
+
+  ```https://diary-server.herokuapp.com/api/v1/entries/2```
+
+
 #### Author
 
 Antony Nduhiu
