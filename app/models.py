@@ -30,3 +30,10 @@ class Entry():
     def delete(self):
         Entry.entries.remove(self)
 
+    
+    @classmethod
+    def entry_exists(cls,title):
+        for entry in cls.entries:
+            if entry.title == title:
+                return True
+        return False

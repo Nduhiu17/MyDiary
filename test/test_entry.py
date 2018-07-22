@@ -49,3 +49,11 @@ class TestEntry(unittest.TestCase):
         self.new_entry.delete()
         self.assertEqual(len(Entry.entries),21)
 
+    def test_entry_exists(self):
+        self.new_entry.save()
+        new_entry = Entry("attend my garden", "plant some seedlings since its a rainy season", "44444")
+        new_entry.save()
+        entry_exist = Entry.entry_exists('attend my garden')
+        self.assertTrue(entry_exist)
+
+
