@@ -1,1 +1,1 @@
-python3.6 api.py server
+FLASK_APP=app flask run
