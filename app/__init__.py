@@ -4,8 +4,27 @@ from flask_restplus import Api
 from app.models import Entry
 from app.resources import EntryResource
 from app.resources import EntryResource, OneEntryResource
+import psycopg2
+
 
 app = Flask(__name__)
+try:
+    connect_str = "dbname='diary' user='antony' host='localhost' " + \
+                  "password='password'"
+    # use our connection values to establish a connection
+    conn = psycopg2.connect(connect_str)
+    # create a psycopg2 cursor that can execute queries
+    cursor = conn.cursor()
+    # create a new table with a single column called "name"
+    cursor.execute("""CREATE TABLE tutorials (name char(40));""")
+    # run a SELECT statement - no data in there, but we can try it
+    cursor.execute("""SELECT * from tutorials""")
+    rows = cursor.fetchall()
+    print(rows)
+except Exception as e:
+    print("failed to connect db")
+    print(e)
+
 
 api = Api(app)
 app.debug = True
