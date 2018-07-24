@@ -1,10 +1,5 @@
-import datetime
-import os
-basedir = os.path.abspath(os.path.dirname(__file__))
-
 
 class Config(object):
-    REMEMBER_COOKIE_DURATION = datetime.timedelta(days=14)
     DEBUG = True
     TESTING = True
     CSRF_ENABLED = True
