@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_restplus import Api
+import psycopg2
 
 from app.models import Entry
 from app.resources import EntryResource
@@ -25,6 +26,22 @@ except Exception as e:
     print("failed to connect db")
     print(e)
 
+
+# cursor = ''
+# try:
+#     connect_str = "dbname='diary_db' user='antony' host='localhost' " + \
+#                   "password='password'"
+#     # use our connection values to establish a connection
+#     conn = psycopg2.connect(connect_str)
+#     # create a psycopg2 cursor that can execute queries
+#     cursor = conn.cursor()
+#     # cursor.execute('SELECT * FROM "public"."entries"')
+#     # rows = cursor.fetchall()
+#     # print(rows)
+#     print("db connectd!!!")
+# except Exception as e:
+#     print("Uh oh, can't connect. Invalid dbname, user or password?")
+#     print(e)
 
 api = Api(app)
 app.debug = True
