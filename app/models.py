@@ -1,7 +1,5 @@
-# from . import cursor
-
-# cursor = ''
 import psycopg2
+from psycopg2._json import Json
 
 try:
     connect_str = "dbname='diary_db' user='antony' host='localhost' " + \
@@ -10,37 +8,39 @@ try:
     conn = psycopg2.connect(connect_str)
     # create a psycopg2 cursor that can execute queries
     cursor = conn.cursor()
-    # cursor.execute('SELECT * FROM "public"."entries"')
-    # rows = cursor.fetchall()
-    # print(rows)
     print("db connectd!!!")
 except Exception as e:
     print("Uh oh, can't connect. Invalid dbname, user or password?")
     print(e)
+
+
 class Entry:
-    entries = []
 
-    def __init__(self, title, description, date_created):
+    def __init__(self, entryid, title, description, datecreated):
         """Method to initialize Entry class"""
-
+        self.entryid = entryid
         self.title = title
         self.description = description
-        self.date_created = date_created
+        self.datecreated = datecreated
 
-    def save(self):
+    @classmethod
+    def save(cls, entryid, title, description, datecreated):
         """Method to save an entry"""
-        self.entries.append(self)
-        # format_str = """INSERT INTO entries (entry_id, title, description, date_created)
-        # VALUES (NULL, "{title}", "{description}", "{date_created}");"""
-        # sql_command = format_str.format(title=[0], description=[1], date_created=[2])
-        # cursor.execute(sql_command)
-    
+        print("title in models.py", title)
+        print("description in models.py", description)
+        print("datecreated in models.py", datecreated)
+
+
+        sql_command = "INSERT INTO entries VALUES(null, '%s', '%s', '%s')" % \
+                      (title, description, datecreated)
+        cursor.execute(sql_command)
+        	
+
+        return sql_command
 
     @classmethod
     def get_all_entries(cls):
         """Method to get all entries"""
-        # entries = cls.entries
-
         cursor.execute('SELECT * FROM "public"."entries"')
         rows = cursor.fetchall()
         print(rows)
@@ -48,7 +48,6 @@ class Entry:
         list_dict = []
 
         for item in rows:
-
             z = {}
 
             z['id'] = item[0]
@@ -60,30 +59,15 @@ class Entry:
             print("list_dict")
         return list_dict
 
-        # for row in rows:
-        #     lis.append(Entry(title=))
-        # my_entries_json = []
-        # for entry in lis:
-        #     my_entries_json.append(entry.__dict__)
-        # return
-
-    
-
-
     @classmethod
     def get_entry(cls, entry_id):
         """Method to get an entry by id"""
-        # entry = cls.entries[entry_id]
-        # return entry
         cursor.execute('SELECT * FROM "public"."entries"')
         rows = cursor.fetchall()
-        print("######################################")
-        print(rows)
 
         list_dict = []
 
         for item in rows:
-
             z = {}
 
             z['id'] = item[0]
@@ -93,12 +77,8 @@ class Entry:
             list_dict.append(z)
 
         entry = list_dict[entry_id]
-        print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-        print("this is my",entry)
-        
+
         return entry
-
-
 
     @classmethod
     def modify_entry(cls, id, modified_object):
@@ -110,9 +90,8 @@ class Entry:
         """Method to delete an entry"""
         Entry.entries.remove(self)
 
-    
     @classmethod
-    def entry_exists(cls,title):
+    def entry_exists(cls, title):
         """Method to check whether an entry exists"""
         for entry in cls.entries:
             if entry.title == title:

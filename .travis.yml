@@ -5,18 +5,26 @@ python:
   - "3.6"
 #Installation
 
+services:
+    - postgresql
+
 before_install:
     - pip install pytest pytest-cov
     - pip install coveralls
+    - psql -c 'create database diary_db;' -U postgres
+    - psql -c 'CREATE TABLE entries(entryid int,title varchar(255),description varchar(255),datecreated varchar(255));' -U postgres
+
 
 install:
-- pip install -r requirements.txt
+    - pip install -r requirements.txt
 # command to run tests
 script:
-  - pytest
+     - pytest
+     - coverage run -m pytest
+     - coverage report
 after_success:
-  - coveralls 
+  - coveralls
+  - coverage report
 
 
 
-    - 

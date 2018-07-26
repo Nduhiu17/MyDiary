@@ -7,49 +7,50 @@ from app.models import Entry
 
 class DiarylistTestCase(unittest.TestCase):
     def setUp(self):
-        self.new_entry = Entry(title="graduation ceremony", description="it was nice attending", date_created=" ")
-        self.new_entry.save()
+        self.new_entry = Entry.save(entryid="6", title="graduation ceremony", description="it was nice attending",
+                                    datecreated=" ")
         self.app = app
-
         self.client = self.app.test_client()
-#
+
     def test_api_get_all_diaryentries(self):
         """Test API can get all entries(GET response)"""
         get_all_response = self.client.get('/api/v1/entries/')
         self.assertEqual(get_all_response.status_code, 200)
-#
+
     def test_api_diary_entries(self):
         """Test whether data stored is a list"""
         get_all_response = self.client.get('/api/v1/entries/')
         self.assertEqual(type(json.loads(get_all_response.get_data().decode())), list)
-#
+
     def test_api_get_diaryentry(self, id=0):
         """Test Api can get a single entry"""
         get_response = self.client.get('api/v1/entries/0')
         self.assertEqual(get_response.status_code, 200)
-#
-#     def test_api_post_diaryentry(self):
-#         """Test api can create an entry (POST response)"""
-#         entry = {'title': 'date created', 'description': 'watched the latest movie', 'date_created': ' '}
-#         response = self.client.post('api/v1/entries/', data=json.dumps(entry),
-#                                     headers={'Content-Type': 'application' '/json'})
-#         self.assertEqual(response.status_code, 201)
-#
-#     def test_posted_entry_is_dictionary(self):
-#         """Test whether created data is a dictionary"""
-#         entry = {'title': 'wedding ceremony', 'description': 'watched the latest movie', 'date_created': ' '}
-#         response = self.client.post('api/v1/entries/', data=json.dumps(entry),
-#                                     headers={'Content-Type': 'application' '/json'})
-#         self.assertEqual(type(json.loads(response.get_data().decode())), dict)
-#
-#     def test_posted_data_is_saved(self):
-#         """Test Api can save data"""
-#         entry = {'title': 'date created', 'description': 'watched the latest movie', 'date_created': ' '}
-#         response = self.client.post('api/v1/entries/', data=json.dumps(entry),
-#                                     headers={'Content-Type': 'application' '/json'})
-#         print("*************************************************************************************")
-#         print(len(entry))
-#         self.assertEqual(len(entry), len(entry))
+
+
+    def test_api_post_diaryentry(self):
+        """Test api can create an entry (POST response)"""
+        entry = {'entryid': 'null', 'title': 'date created', 'description': 'watched the latest movie',
+                 'datecreated': ' '}
+        response = self.client.post('api/v1/entries/', data=json.dumps(entry),
+                                    headers={'Content-Type': 'application' '/json'})
+        self.assertEqual(response.status_code, 201)
+
+
+    def test_posted_entry_is_dictionary(self):
+        """Test whether created data is a dictionary"""
+        entry = {'title': 'wedding ceremony', 'description': 'watched the latest movie', 'date_created': ' '}
+        response = self.client.post('api/v1/entries/', data=json.dumps(entry),
+                                    headers={'Content-Type': 'application' '/json'})
+        self.assertEqual(type(json.loads(response.get_data().decode())), dict)
+
+
+    def test_posted_data_is_saved(self):
+        """Test Api can save data"""
+        entry = {'title': 'date created', 'description': 'watched the latest movie', 'datecreated': ' '}
+        response = self.client.post('api/v1/entries/', data=json.dumps(entry),
+                                    headers={'Content-Type': 'application' '/json'})
+        self.assertEqual(len(entry), len(entry))
 #
 #     def test_modify_entry(self):
 #         """Test whether an Api can modify an entry"""
