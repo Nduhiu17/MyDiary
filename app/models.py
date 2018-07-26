@@ -80,20 +80,20 @@ class Entry:
 
         return entry
 
-    @classmethod
-    def modify_entry(cls, id, modified_object):
-        """Method to modify an entry"""
-        cls.entries[id] = modified_object
-        return modified_object
+    # @classmethod
+    # def modify_entry(cls, id, modified_object):
+    #     """Method to modify an entry"""
+    #     cls.entries[id] = modified_object
+    #     return modified_object
 
-    def delete(self):
-        """Method to delete an entry"""
-        Entry.entries.remove(self)
+    # def delete(self):
+    #     """Method to delete an entry"""
+    #     Entry.entries.remove(self)
 
-    @classmethod
-    def entry_exists(cls, title):
-        """Method to check whether an entry exists"""
-        for entry in cls.entries:
-            if entry.title == title:
-                return True
-        return False
+    # @classmethod
+    # def entry_exists(cls, title):
+    #     """Method to check whether an entry exists"""
+    #     for entry in cls.entries:
+    #         if entry.title == title:
+    #             return True
+    #     return False

@@ -4,6 +4,19 @@ import unittest
 from app import app
 from app.models import Entry
 
+import psycopg2
+
+def postgres_test():
+
+    try:
+        connect_str = "dbname='diary_db' user='antony' host='localhost' " + \
+                  "password='password'"
+        conn = psycopg2.connect(connect_str)
+        conn.close()
+        return True
+    except:
+        return False
+
 
 class DiarylistTestCase(unittest.TestCase):
     def setUp(self):
@@ -11,6 +24,9 @@ class DiarylistTestCase(unittest.TestCase):
                                     datecreated=" ")
         self.app = app
         self.client = self.app.test_client()
+    
+    def test_db_init(self):
+        self.assertTrue(postgres_test(),True)
 
     def test_api_get_all_diaryentries(self):
         """Test API can get all entries(GET response)"""
