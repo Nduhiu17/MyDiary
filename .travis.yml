@@ -13,6 +13,7 @@ before_install:
     - pip install coveralls
     - psql -c 'create database diary_db;' -U postgres
     - psql -c 'CREATE TABLE entries(entryid int,title varchar(255),description varchar(255),datecreated varchar(255));' -U postgres
+    - psql -c "CREATE USER antony WITH PASSWORD 'password';" -U postgres
 
 
 install:
