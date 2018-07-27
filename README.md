@@ -74,11 +74,6 @@ Please click on the link below to view the user interface design
   >```https://nduhiu17.github.io/MyDiary/```
 
 
-### Licence
-
->```This application is licenced under GNU licence```
-
-
 #### Author
 
 Antony Nduhiu
