@@ -193,7 +193,6 @@ footer{
 		width: 100%;
 		background-color: #f7f7f7;
 		border-bottom: 1px solid #ececec;
-		/* height: 12vh; */
 		padding: 75px 0;
 	}
 
@@ -286,7 +285,6 @@ footer{
 		font-size: 15px;
 		padding: 12px 22px;
 		float: right;
-		margin-right: 2vh;
 		margin-top: 7vh;
 		border-radius: 8px;
 	
@@ -303,6 +301,8 @@ footer{
 
 	.profilesidebar{
 		width: 30%;
+		margin-top: -26vh;
+		margin-left: 83vh;
 	}
 
 	.profilecontainer{
@@ -310,6 +310,8 @@ footer{
 		background-color: #fff;
 		height: 50%;
 		overflow-y: scroll;
+		justify-content: center;
+		
 	}
 
 	.profilebodyheader{
@@ -317,6 +319,7 @@ footer{
 		height: 31vh;
 		width: 97.5%;
 		border-bottom:0.1px solid #ccc; 
+		background-color: #dee5e8;
 	}
 
 	.profilepic{
@@ -361,16 +364,16 @@ footer{
 	}
 
 	.profiledetails{
-		margin-left: 35px;
+		margin-left: 546px;
 		width: 28%;
-		margin-top: 43px;
-		height:20vh;
+		margin-top: -51px;
+		height: 20vh;
 	}
 
 	.reminders{
     width: 40vh;
     height: 30vh;
-    margin-left: 46px;
+    margin-left: -135px;
 	margin-top: 44px;
 	}
 
@@ -381,7 +384,7 @@ footer{
 	}
 
 	input[type=text], select {
-		width: 100%;
+		width: 25em;
 		padding: 6px 20px;
 		margin: 8px 0;
 		display: inline-block;
@@ -449,4 +452,37 @@ footer{
 
 .detailseditbutton a{
 	color:whitesmoke;
+}
+
+.formpassword{
+	width: 24em;
+	padding: 13px 15px;
+	margin: 8px 0;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	margin: 10px;
+	font-weight: 100;
+	font-size: 25px;
+	margin-left: -1vh;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.footersignin{
+   position:absolute;
+   bottom:0;
+   width:100%;
+   height:60px;
+}
+
+.signbuttons{
+	display: flex;
+}
+
+.signindiv{
+	justify-content: flex-start;
+}
+
+.sinupdivp{
+	justify-content: flex-end;
 }

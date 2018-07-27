@@ -35,13 +35,13 @@
 
 @media (max-width: 726px){
 .profilemainbar{
-    border-right:0.1px solid #ccc;
+    /* border-right:0.1px solid #ccc; */
 }
 }
 @media (min-width: 726px){
     .profilemainbar{
         width: 70%;
-        border-right:0.1px solid #ccc;
+        /* border-right:0.1px solid #ccc; */
     }
     }
 
@@ -51,9 +51,9 @@
         flex-direction: column;
         justify-content: flex-start;
         padding: 0px;
-        margin-left: 0px;
         border-bottom: 1px solid #dee5e8;
         overflow: hidden;
+        margin-left: 241px;
         
 
     }
