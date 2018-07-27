@@ -1,8 +1,11 @@
 ### MyDiary-API
 
 [![Build Status](https://travis-ci.org/travis-ci/travis-web.svg?branch=master)](https://travis-ci.org/travis-ci/travis-web)
-[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)
+[![Coverage Status](https://coveralls.io/repos/github/Nduhiu17/MyDiary/badge.svg)](https://coveralls.io/github/Nduhiu17/MyDiary)
+[![PEP8](https://img.shields.io/badge/code%20style-pep8-orange.svg)](https://www.python.org/dev/peps/pep-0008/)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
+
 
 
 #### Description
@@ -26,8 +29,9 @@ Ensure you have the following:
 ```
 
 Create a virtualenv and activate it by running the following commands.
-$python3.6 -m venv virtual
-$source virtual/bin/activate
+>$python3.6 -m venv virtual
+
+>$source virtual/bin/activate
 
 ### Dependencies
 - Install the project dependencies:
@@ -35,13 +39,13 @@ $source virtual/bin/activate
 
 You can run the tests by running:
 
-$```pytest```
+>$```pytest```
 
 After setting up the above. Run the application by:
 
-```FLASK_APP=app flask run``
+>$```FLASK_APP=app flask run``
 
-Test the endpoints registered on `api.py` on Postman:
+Test the endpoints registered  on Postman:
 
 1.End point to get all entries
 
@@ -58,6 +62,21 @@ Test the endpoints registered on `api.py` on Postman:
 4.End point to update an entry.
 
   ```https://diary-server.herokuapp.com/api/v1/entries/2```
+
+4.End point to delete an entry.
+
+  ```https://diary-server.herokuapp.com/api/v1/entries/1```
+
+### User interface
+
+Please click on the link below to view the user interface design
+
+  >```https://nduhiu17.github.io/MyDiary/```
+
+
+### Licence
+
+>```This application is licenced under GNU licence```
 
 
 #### Author
