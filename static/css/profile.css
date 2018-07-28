@@ -1,0 +1,133 @@
+.main-prof-bar{
+    flex-direction: row;
+	width: 60%;
+	 /* border-left: 2px solid #eee; 
+	border-right: 2px solid #eee; */
+    height: 70vh;
+    margin-top: 2vh;
+}
+
+.imagediv{
+    align-content:flex-start;
+    width: 14em;
+    align-items: center;
+}
+
+.profilefooter{
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    background-color: #f6f7f8;
+}
+
+.profdetailsdiv{
+    align-content:flex-end;
+    width: 20em;
+    align-items: center;
+    margin-left: auto;
+    align-content:flex-end;
+    padding-top: 3em;
+}
+
+.profcontainer{
+    display: flex;
+    background-color: #dee5e8;
+    height: 25vh;
+    padding: 10px;
+}
+
+img{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.proffluidcontainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.profreminders{
+    align-content:flex-end;
+    margin-left: auto;
+}
+
+.fontreminders{
+    color: #829399;
+    font-size: 23px;
+}
+
+.journalstatistics{
+    align-content:flex-start;
+}
+
+.reminderbutton {
+    background-color: #2283c9;
+    border: 0 none;
+    color: #fff;
+    font-size: 11px;
+    padding: 12px 22px;
+    float: right;
+    border-radius: 8px;
+}
+
+.profilecontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0px;
+    border-bottom: 1px solid #dee5e8;
+    overflow: hidden;
+    margin-left: 241px;
+    min-height: 67vh;
+}
+
+.prof-containermain{
+	display: flex;
+}
+
+.profbottomdiv {
+    margin-top: 10px;
+    border: 2px solid #eee;
+    padding: 10px;
+}
+
+form {
+    padding-bottom: 15px;
+    padding-top: 10px;
+}
+
+@media (max-width: 726px){
+    .profcontainer{
+        flex-direction: column;
+        align-items: center;
+        align-content: space-between;
+        height: auto;
+    }
+    }
+
+@media (max-width: 726px){
+    .proffluidcontainer{
+        flex-direction: column;
+        align-items: center;
+        align-content: space-between;
+        height: auto;
+    }
+    }
+
+    @media (max-width: 726px){
+        .profdetailsdiv{
+            margin-top: 5em;
+        }
+        }
+ @media (max-width: 726px){
+        .profilefooter {
+            position: absolute;
+            bottom: -283px;
+            text-align: center;
+            background-color: #f6f7f8;
+}
+}
+        
+    

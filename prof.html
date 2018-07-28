@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./static/css/styles.css">
+    <link rel="stylesheet" href="./static/css/header.css">
+    <link rel="stylesheet" href="./static/css/profile.css">
+    <title>Profile</title>
+</head>
+    <body>
+        <div class="maintopheader">
+            <header class="header">
+                <h3 class="logo"><a href="home.html">MyDiary</a></h3>
+                <ul class="main-nav">
+                    <li><a href="#">About</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="signin.html">Log out</a></li>
+                </ul>
+            </header> 
+            <div class="flex-container">
+                <div class="navtwoitems">
+                    <a href="add-entry.html"><div class="linavtwo">Add Diary</div></a>
+                    <div class="linavtwo">Edit Diary</div>
+                    <div class="linavtwoall">View Dairies</div>
+                </div>
+                <div class="navform">
+                    <input class="headernavform" type="text" placeholder="Search">
+                </div>
+            </div>
+        </div>
+        <div class="prof-containermain">
+            <div class="left-bar">
+            </div>
+            <div class="main-prof-bar">
+                <div class="profcontainer">
+                    <div class="imagediv">
+                        <div class="profilepic">
+                            <p class="profusername">Username</p>
+                            <img src="./img/user.gif" alt="profile picture">
+                        </div>
+                    </div>
+                    <div class="profdetailsdiv">
+                        <div>
+                            Name:Antony Nduhiu<hr>
+                            Email:nduhiu254@gmail.com<hr>
+                            Gender:Male
+                        </div>
+                    </div>
+                </div>
+               <div class="profbottomdiv">
+                   <div class="proffluidcontainer">
+                        <div class="journalstatistics">
+                            <p class="pjournals">Total Entries</p>
+                            <img class="totalj" src="./img/journal.png" alt="">
+                            <p class="totalentries">
+                                8 Journals
+                            </p>
+                        </div>
+                        <div class="profreminders">
+                            <div>
+                             <p class="fontreminders">Set Reminder</p>
+                                <label for="time">Select time to be reminded</label>
+                                <form>
+                                    Date:
+                                    <input type="date" name="bday">
+                                  </form>
+                                <button class="reminderbutton">
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                   </div>
+               </div>
+            </div>
+            <div class="right-bar">
+                <!-- Hello div 3 -->
+            </div>
+        </div>
+    <footer class="profilefooter">
+        <p>&copy; 2018 MyDiary<p>
+    </footer>
+    </body>
+   
+</html>
