@@ -1,3 +1,25 @@
+# from . import cursor
+
+# cursor = ''
+import psycopg2
+
+try:
+    # os.environ['DATABASE_URL'] = connect_str
+    # connect_str = "dbname='diary_db' user='antony' host='localhost' " + \
+    #               "password='password'"
+    connect_str = "dbname='diary_db_test' user='postgres' host='localhost' " + \
+                  "password='postgres'"
+    # use our connection values to establish a connection
+    conn = psycopg2.connect(connect_str)
+    # create a psycopg2 cursor that can execute queries
+    cursor = conn.cursor()
+    # cursor.execute('SELECT * FROM "public"."entries"')
+    # rows = cursor.fetchall()
+    # print(rows)
+    print("db connectd!!!")
+except Exception as e:
+    print("Uh oh, can't connect. Invalid dbname, user or password?")
+    print(e)
 class Entry:
     entries = []
 
@@ -11,21 +33,75 @@ class Entry:
     def save(self):
         """Method to save an entry"""
         self.entries.append(self)
+        # format_str = """INSERT INTO entries (entry_id, title, description, date_created)
+        # VALUES (NULL, "{title}", "{description}", "{date_created}");"""
+        # sql_command = format_str.format(title=[0], description=[1], date_created=[2])
+        # cursor.execute(sql_command)
+    
 
     @classmethod
     def get_all_entries(cls):
         """Method to get all entries"""
-        entries = cls.entries
-        my_entries_json = []
-        for entry in entries:
-            my_entries_json.append(entry.__dict__)
-        return my_entries_json
+        # entries = cls.entries
+
+        cursor.execute('SELECT * FROM "public"."entries"')
+        rows = cursor.fetchall()
+        print(rows)
+
+        list_dict = []
+
+        for item in rows:
+
+            z = {}
+
+            z['id'] = item[0]
+            z['title'] = item[1]
+            z["description"] = item[2]
+            z['datecreated'] = item[3]
+
+            list_dict.append(z)
+            print("list_dict")
+        return list_dict
+
+        # for row in rows:
+        #     lis.append(Entry(title=))
+        # my_entries_json = []
+        # for entry in lis:
+        #     my_entries_json.append(entry.__dict__)
+        # return
+
+    
+
 
     @classmethod
     def get_entry(cls, entry_id):
         """Method to get an entry by id"""
-        entry = cls.entries[entry_id]
+        # entry = cls.entries[entry_id]
+        # return entry
+        cursor.execute('SELECT * FROM "public"."entries"')
+        rows = cursor.fetchall()
+        print("######################################")
+        print(rows)
+
+        list_dict = []
+
+        for item in rows:
+
+            z = {}
+
+            z['id'] = item[0]
+            z['title'] = item[1]
+            z["description"] = item[2]
+            z['datecreated'] = item[3]
+            list_dict.append(z)
+
+        entry = list_dict[entry_id]
+        print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+        print("this is my",entry)
+        
         return entry
+
+
 
     @classmethod
     def modify_entry(cls, id, modified_object):
