@@ -24,6 +24,7 @@ marshmallow==2.15.3
 mccabe==0.6.1
 more-itertools==4.2.0
 pluggy==0.6.0
+psycopg2==2.7.5
 py==1.5.4
 pylint==2.0.0
 pytest==3.6.3

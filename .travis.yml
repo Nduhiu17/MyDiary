@@ -4,6 +4,12 @@ language: python
 python:
   - "3.6"
 #Installation
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - psql -c 'alter role postgres password 'postgres';' -U postgres
 
 before_install:
     - pip install pytest pytest-cov
@@ -15,8 +21,4 @@ install:
 script:
   - pytest
 after_success:
-  - coveralls 
-
-
-
-    - 
+  - coverage run -m pytest

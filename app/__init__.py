@@ -1,11 +1,11 @@
 from flask import Flask
 from flask_restplus import Api
-import psycopg2
+# import psycopg2
 
 from app.models import Entry
 from app.resources import EntryResource
 from app.resources import EntryResource, OneEntryResource
-import psycopg2
+# import psycopg2
 
 
 app = Flask(__name__)

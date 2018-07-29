@@ -21,9 +21,9 @@ class TestEntry(unittest.TestCase):
         new_entry.save()
         self.assertEqual(len(Entry.entries), 2)
 #
-    def test_get_all_entries(self):
-        """Test all entries can be gotten"""
-        self.assertEqual(len(Entry.get_all_entries()), 1)
+    # def test_get_all_entries(self):
+    #     """Test all entries can be gotten"""
+    #     self.assertEqual(len(Entry.get_all_entries()), 1)
 
     def test_get_entry(self, id=0):
         """Test an entry can be gotten by id"""
