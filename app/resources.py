@@ -45,7 +45,5 @@ class OneEntryResource(Resource):
     """Method to get an entry by id(GET request)"""
     def get(self, id):
         result = Entry.get_entry(id)
-        result_jsonified = result.__dict__
-        print(result_jsonified)
-        return result_jsonified
+        return result
 
