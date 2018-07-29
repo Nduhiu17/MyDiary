@@ -9,7 +9,7 @@ from app.models import Entry
 from config import config_options
 from database import Database
 
-app = Flask(__name__)
+# app = Flask(__name__)
 # try:
 #     connect_str = "dbname='diary' user='antony' host='localhost' " + \
 #                   "password='password'"
@@ -30,11 +30,11 @@ db = Database()
 api = None
 def create_app(config_name):
     app = Flask(__name__)
-    db = Database()
+    # db = Database()
 
     app.config.from_object(config_options[config_name])
     # app.config.from_object(app_config[config_name])
-    # db.__init__(config_name)
+    db.__init__()
     # from Api_v1.app.endpoints.contents import entries_namespace as entries
     # from Api_v1.app.endpoints.auth import auth_namespace as auth
     # api.add_namespace(entries, path='/user')
@@ -58,4 +58,4 @@ def create_app(config_name):
 
 
 
-from . import  models
+# from . import  models

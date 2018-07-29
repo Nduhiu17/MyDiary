@@ -25,12 +25,12 @@ class TestEntry(unittest.TestCase):
     #     """Test all entries can be gotten"""
     #     self.assertEqual(len(Entry.get_all_entries()), 1)
 
-    def test_get_entry(self, id=0):
-        """Test an entry can be gotten by id"""
-        entry = Entry.get_entry(id)
-        print("here is my returned object",entry)
-        self.assertTrue(type(entry), dict)
-#
+#     def test_get_entry(self, id=0):
+#         """Test an entry can be gotten by id"""
+#         entry = Entry.get_entry(id)
+#         print("here is my returned object",entry)
+#         self.assertTrue(type(entry), dict)
+# #
 #     def test_save_multiple_entries(self):
 #         """Test multiple entries can be saved"""
 #         self.new_entry.save()
