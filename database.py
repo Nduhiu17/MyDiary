@@ -11,7 +11,7 @@ class Database:
         self.cursor = self.connection.cursor()
 
     def create_users_table(self):
-        sql_command = """ CREATE TABLE users (
+        sql_command = """ CREATE TABLE IF NOT EXISTS  users (
                 id SERIAL PRIMARY KEY,
                 username VARCHAR(80) NOT NULL,
                 firstname VARCHAR(80) NOT NULL,
@@ -24,7 +24,7 @@ class Database:
 
     def create_entries_table(self):
         sql_command = """ 
-        CREATE TABLE  "public"."entries"  (
+        CREATE TABLE IF NOT EXISTS "public"."entries"  (
                 id SERIAL PRIMARY KEY,
                 title VARCHAR(80) NOT NULL,
                 description VARCHAR(280) NOT NULL,
