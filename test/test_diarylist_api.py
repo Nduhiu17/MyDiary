@@ -2,27 +2,32 @@ import json
 import os
 import unittest
 
-from app import create_app
-from app.models import Entry
 
-
-
-# class DiarylistTestCase(unittest.TestCase):
-#     def setUp(self):
-#         # self.new_entry = Entry(title="graduation ceremony", description="it was nice attending", date_created=" ")
-#         # self.new_entry.save()
-#         connect_str = "dbname='diary_db_test' user='postgres' host='localhost' " + "password='postgres'"
-#         os.environ['DATABASE_URL'] = connect_str
-#         # self.app = app
-#         self.app = create_app("test")
+# from app import create_app
+# from app.models import Entry
 #
-#         self.client = self.app.test_client()
-# #
-#     def test_api_get_all_diaryentries(self):
-#         """Test API can get all entries(GET response)"""
-#         get_all_response = self.client.get('/api/v1/entries/')
-#         self.assertEqual(get_all_response.status_code, 200)
-# #
+#
+from app.app import create_app
+
+
+class DiarylistTestCase(unittest.TestCase):
+    def setUp(self):
+        # self.new_entry = Entry(title="graduation ceremony", description="it was nice attending", date_created=" ")
+        # self.new_entry.save()
+        # connect_str = "dbname='diary_db_test' user='postgres' host='localhost' " + "password='postgres'"
+        # os.environ['DATABASE_URL'] = connect_str
+        # self.app = app
+        connect_str = "dbname='diary_db_test' user='postgres' host='localhost' " + "password='postgres'"
+        os.environ['DATABASE_URL'] = connect_str
+        self.app = create_app("development")
+
+        self.client = self.app.test_client()
+#
+    def test_api_get_all_diaryentries(self):
+        """Test API can get all entries(GET response)"""
+        get_all_response = self.client.get('/api/v1/entries/')
+        self.assertEqual(get_all_response.status_code, 200)
+#
 #     def test_api_diary_entries(self):
 #         """Test whether data stored is a list"""
 #         get_all_response = self.client.get('/api/v1/entries/')

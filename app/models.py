@@ -6,20 +6,22 @@ import os
 import psycopg2
 
 try:
-    # # connect_str = "dbname='diary_db' user='antony' host='localhost' " + "password='password'"
-    # connect_str=os.environ['DATABASE_URL']
-    # # use our connection values to establish a connection
-    # conn = psycopg2.connect(connect_str)
-    # # create a psycopg2 cursor that can execute queries
-    # cursor = c.cursor()
-    # # cursor.execute('SELECT * FROM "public"."entries"')
-    # # rows = cursor.fetchall()
-    # # print(rows)
-    db = os.environ['DATABASE_URL']
-    connection = psycopg2.connect(db)
-    connection.autocommit = True
-    cursor = connection.cursor()
-    print("db connectd!!!")
+    # connect_str = "dbname='diary_db' user='antony' host='localhost' " + "password='password'"
+    connect_str=os.environ['DATABASE_URL']
+    # use our connection values to establish a connection
+    conn = psycopg2.connect(connect_str)
+    # create a psycopg2 cursor that can execute queries
+    cursor = conn.cursor()
+    # cursor.execute('SELECT * FROM "public"."entries"')
+    # rows = cursor.fetchall()
+    # print(rows)
+
+
+    # db = os.environ['DATABASE_URL']
+    # connection = psycopg2.connect(db)
+    # connection.autocommit = True
+    # cursor = connection.cursor()
+    # print("db connectd!!!",db)
 except Exception as e:
     print("Uh oh, can't connect. Invalid dbname, user or password?")
     print(e)
