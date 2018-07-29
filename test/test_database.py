@@ -16,8 +16,6 @@ class DatabaseTestCase(unittest.TestCase):
         self.db.drop_users_table()
         self.db.drop_entries_table()
 
-
-    #
     def test_database_init(self):
         cursor = self.db.cursor
         cursor.execute('SELECT * FROM "public"."users"')
