@@ -3,7 +3,11 @@ language: python
 #Language version
 python:
   - "3.6"
-#Installation
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'create database diary_db_test;' -U postgres
 
 before_install:
     - pip install pytest pytest-cov
@@ -15,8 +19,4 @@ install:
 script:
   - pytest
 after_success:
-  - coveralls 
-
-
-
-    - 
+  - coverage run -m pytest
