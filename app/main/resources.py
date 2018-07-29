@@ -1,8 +1,9 @@
 from flask import request, abort
-from flask_restplus import Resource
+from flask_restplus import Resource, Namespace
 
-from .models import Entry
-
+# from .models import Entry
+# from app import Entry
+from app.models import Entry
 
 class EntryResource(Resource):
     """Method to get all entries(GET request)"""

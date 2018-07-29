@@ -1,15 +1,20 @@
 import json
+import os
 import unittest
 
-from app import app
+from app import app, create_app
 from app.models import Entry
+
 
 
 class DiarylistTestCase(unittest.TestCase):
     def setUp(self):
-        self.new_entry = Entry(title="graduation ceremony", description="it was nice attending", date_created=" ")
-        self.new_entry.save()
+        # self.new_entry = Entry(title="graduation ceremony", description="it was nice attending", date_created=" ")
+        # self.new_entry.save()
+        connect_str = "dbname='diary_db_test' user='postgres' host='localhost' " + "password='postgres'"
+        os.environ['DATABASE_URL'] = connect_str
         self.app = app
+        self.app = create_app("test")
 
         self.client = self.app.test_client()
 #
