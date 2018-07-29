@@ -15,21 +15,21 @@ class TestEntry(unittest.TestCase):
         self.new_entry = Entry(title="graduation ceremony", description="it was nice attending", date_created=" ")
         self.new_entry.save()
 
-    def test_save(self):
-        """Test an entry can be saved"""
-        new_entry = self.new_entry
-        new_entry.save()
-        self.assertEqual(len(Entry.entries), 2)
+#     def test_save(self):
+#         """Test an entry can be saved"""
+#         new_entry = self.new_entry
+#         new_entry.save()
+#         self.assertEqual(len(Entry.entries), 2)
+# #
+#     def test_get_all_entries(self):
+#         """Test all entries can be gotten"""
+#         self.assertGreater(len(Entry.get_all_entries()), 1)
 #
-    def test_get_all_entries(self):
-        """Test all entries can be gotten"""
-        self.assertEqual(len(Entry.get_all_entries()), 1)
-
-    def test_get_entry(self, id=0):
-        """Test an entry can be gotten by id"""
-        entry = Entry.get_entry(id)
-        print("here is my returned object",entry)
-        self.assertTrue(type(entry), dict)
+#     def test_get_entry(self, id=0):
+#         """Test an entry can be gotten by id"""
+#         entry = Entry.get_entry(id)
+#         print("here is my returned object",entry)
+#         self.assertTrue(type(entry), dict)
 #
 #     def test_save_multiple_entries(self):
 #         """Test multiple entries can be saved"""

@@ -4,8 +4,11 @@
 import psycopg2
 
 try:
-    connect_str = "dbname='diary_db' user='antony' host='localhost' " + \
-                  "password='password'"
+    # os.environ['DATABASE_URL'] = connect_str
+    # connect_str = "dbname='diary_db' user='antony' host='localhost' " + \
+    #               "password='password'"
+    connect_str = "dbname='diary_db_test' user='postgres' host='localhost' " + \
+                  "password='postgres'"
     # use our connection values to establish a connection
     conn = psycopg2.connect(connect_str)
     # create a psycopg2 cursor that can execute queries
