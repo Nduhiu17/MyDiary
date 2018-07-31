@@ -38,7 +38,7 @@ class DiarylistTestCase(unittest.TestCase):
 
     def test_api_post_diaryentry(self):
         """Test api can create an entry (POST response)"""
-        entry = {'user_id':2,'title': 'test_title', 'description': 'watched the latest movie','date_created':str(datetime.now())}
+        entry = {'user_id':1,'title': 'test_title', 'description': 'watched the latest movie','date_created':str(datetime.now())}
         response = self.client.post('api/v1/entries/', data=json.dumps(entry),
                                     headers={'Content-Type': 'application' '/json'})
         self.assertEqual(response.status_code, 201)
