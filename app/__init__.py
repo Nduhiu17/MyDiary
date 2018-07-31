@@ -5,6 +5,7 @@ import psycopg2
 from app.models import Entry
 from app.resources import EntryResource
 from app.resources import EntryResource, OneEntryResource
+from app.users import UserResource
 import psycopg2
 
 
@@ -21,6 +22,8 @@ except Exception as e:
 
 api = Api(app)
 app.debug = True
+
+api.add_resource(UserResource, '/api/v1/users/')
 api.add_resource(OneEntryResource, '/api/v1/entries/<int:id>')
 api.add_resource(EntryResource, '/api/v1/entries/', '/api/v1/entries/', '/api/v1/entries/<int:id>')
 

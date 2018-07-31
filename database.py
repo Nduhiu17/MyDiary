@@ -26,6 +26,7 @@ class Database:
             id SERIAL ,
             user_id INTEGER NOT NULL,
             date_created VARCHAR(80),
+            date_modified VARCHAR(80),
             title VARCHAR(255) NOT NULL,
             description TEXT NOT NULL,
             PRIMARY KEY (user_id,id),

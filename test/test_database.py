@@ -6,7 +6,7 @@ from database import Database
 
 class DatabaseTestCase(unittest.TestCase):
     def setUp(self):
-        connect_str = "dbname='diary_db_test' user='postgres' host='localhost' " + "password='postgres'"
+        connect_str = "dbname='diary_test' user='postgres' host='localhost' " + "password='postgres'"
         os.environ['DATABASE_URL'] = connect_str
         self.db = Database()
         self.db.create_users_table()

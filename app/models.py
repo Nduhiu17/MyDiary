@@ -5,10 +5,10 @@ import psycopg2
 
 try:
     # connect_str = "dbname='diary_db' user='antony' host='localhost' " + \
-    #               "password='password'"
+                #   "password='password'"
     connect_str = "dbname='diary_db_test' user='postgres' host='localhost' " + \
                   "password='postgres'"
-    # enabled for testing
+     #enabled for testing
     os.environ['DATABASE_URL'] = connect_str
     conn = psycopg2.connect(os.environ['DATABASE_URL'])
     conn.autocommit = True
@@ -23,11 +23,11 @@ except Exception as e:
 class Entry:
 
     @classmethod
-    def save(cls, user_id,date_created,title, description):
+    def save(cls, user_id,date_created, date_modified, title, description):
         """Method to save an entry"""
         format_str = f"""
-        INSERT INTO public.entries (user_id,title,description,date_created)
-        VALUES ('{user_id}','{title}','{description}','{str(datetime.now())}') ;
+        INSERT INTO public.entries (user_id,title,description,date_created,date_modified)
+        VALUES ('{user_id}','{title}','{description}','{str(datetime.now())}','{str(datetime.now())}') ;
         """
         cursor.execute(format_str)
 
@@ -54,8 +54,9 @@ class Entry:
             z['id'] = item[0]
             z['user_id'] = item[1]
             z['date_created'] = item[2]
-            z['title'] = item[3]
-            z["description"] = item[4]
+            z['date_modified'] = item[3]
+            z['title'] = item[4]
+            z["description"] = item[5]
            
 
             list_dict.append(z)
@@ -103,5 +104,18 @@ class Entry:
  
 
 class User:
-    pass 
+
+    @classmethod
+    def save(cls,username,email,password):
+        format_str = f"""
+        INSERT INTO public.users (username,email,password)
+        VALUES ('{username}','{email}','{password}');
+        """
+        cursor.execute(format_str)
+        return {
+            "username": username,
+            "email": email,
+        }
+
+
 

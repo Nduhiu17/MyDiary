@@ -18,8 +18,11 @@ class EntryResource(Resource):
 
         # entry = Entry.save(user_id=request.json['user_id'],title=request.json['title'],description=request.json['description'])
         # entry = Entry.save(user_id=request.json['user_id'],date_created=request.json['date_created'],title=request.json['title'],description=request.json['description'])
-        entry = Entry.save(user_id=request.json['user_id'],date_created = str(datetime.now()),title=request.json['title'],description=request.json['description'])
+        # print("******************", request.json['description'])
+        # entry = Entry.save(user_id=request.json['user_id'],date_created = str(datetime.now()),date_modified = str(datetime.now()), title=request.json['title'],description=request.json['description'])
+        entry = Entry.save(user_id=request.json['user_id'],date_created = str(datetime.now()),date_modified = str(datetime.now()),title=request.json['title'],description=request.json['description'])
 
+        
         return {"status": "Success", "data": entry}, 201
 
     # def put(self, id):
@@ -40,10 +43,15 @@ class EntryResource(Resource):
     #     entry.delete()
     #     entry.save()
     #     return {"status": "Success"}, 200
-    #
+#     #
 class OneEntryResource(Resource):
     """Method to get an entry by id(GET request)"""
     def get(self, id):
         result = Entry.get_entry(id)
         return result
+
+
+
+
+
 
