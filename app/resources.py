@@ -1,5 +1,6 @@
 from flask import request, abort
 from flask_restplus import Resource
+from datetime import datetime
 
 from .models import Entry
 
@@ -15,7 +16,10 @@ class EntryResource(Resource):
         if not request.json:
             abort(400)
 
-        entry = Entry.save(title=request.json['title'],description=request.json['description'],)
+        # entry = Entry.save(user_id=request.json['user_id'],title=request.json['title'],description=request.json['description'])
+        # entry = Entry.save(user_id=request.json['user_id'],date_created=request.json['date_created'],title=request.json['title'],description=request.json['description'])
+        entry = Entry.save(user_id=request.json['user_id'],date_created = str(datetime.now()),title=request.json['title'],description=request.json['description'])
+
         return {"status": "Success", "data": entry}, 201
 
     # def put(self, id):

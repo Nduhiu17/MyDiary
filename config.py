@@ -4,6 +4,8 @@ class Config(object):
     DEBUG = True
     TESTING = True
     CSRF_ENABLED = True
+    APP_NAME = 'MyDiary'
+
 
 
 class ProductionConfig(Config):
