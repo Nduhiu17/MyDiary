@@ -5,10 +5,10 @@ import psycopg2
 
 try:
     # connect_str = "dbname='diary_db' user='antony' host='localhost' " + \
-    #               "password='password'"
+                #   "password='password'"
     connect_str = "dbname='diary_db_test' user='postgres' host='localhost' " + \
                   "password='postgres'"
-    # enabled for testing
+     #enabled for testing
     os.environ['DATABASE_URL'] = connect_str
     conn = psycopg2.connect(os.environ['DATABASE_URL'])
     conn.autocommit = True
@@ -23,15 +23,17 @@ except Exception as e:
 class Entry:
 
     @classmethod
-    def save(cls, title, description):
+    def save(cls, user_id,date_created, date_modified, title, description):
         """Method to save an entry"""
         format_str = f"""
-        INSERT INTO public.entries (title,description,datecreated)
-        VALUES ('{title}','{description}','{str(datetime.now())}') ;
+        INSERT INTO public.entries (user_id,title,description,date_created,date_modified)
+        VALUES ('{user_id}','{title}','{description}','{str(datetime.now())}','{str(datetime.now())}') ;
         """
-        sql_result = cursor.execute(format_str)
+        cursor.execute(format_str)
 
         return {
+            "user_id": user_id,
+            "date_created":date_created,
             "title": title,
             "description": description
         }
@@ -50,9 +52,12 @@ class Entry:
             z = {}
 
             z['id'] = item[0]
-            z['title'] = item[1]
-            z["description"] = item[2]
-            z['datecreated'] = item[3]
+            z['user_id'] = item[1]
+            z['date_created'] = item[2]
+            z['date_modified'] = item[3]
+            z['title'] = item[4]
+            z["description"] = item[5]
+           
 
             list_dict.append(z)
             print("list_dict")
@@ -60,48 +65,57 @@ class Entry:
 
         return list_dict
 
+    # @classmethod
+    # def get_entry(cls, entry_id):
+    #     """Method to get an entry by id"""
+    #     # entry = cls.entries[entry_id]
+    #     # return entry
+    #     cursor.execute('SELECT * FROM "public"."entries"')
+    #     rows = cursor.fetchone()
+    #     print("######################################")
+    #     print(rows)
+
+    #     list_dict = []
+        
+    #     for item in rows:
+        
+    #         z = {}
+        
+    #         z['id'] = item[0]
+    #         z['user_id'] = item[1]
+    #         z['date_created'] = item[2]
+    #         z['title'] = item[3]
+    #         z["description"] = item[4]
+
+    #         list_dict.append(z)
+        
+    #     entry = list_dict[id]
+    #     print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+    #     print("this is my",entry)
+
+    #     return {}
+
+    # @classmethod
+    # def modify_entry(cls, id, modified_object):
+    #     """Method to modify an entry"""
+    #     cls.entries[id] = modified_object
+    #     return modified_object
+
+ 
+
+class User:
+
     @classmethod
-    def get_entry(cls, entry_id):
-        """Method to get an entry by id"""
-        # entry = cls.entries[entry_id]
-        # return entry
-        cursor.execute('SELECT * FROM "public"."entries"')
-        rows = cursor.fetchone()
-        print("######################################")
-        print(rows)
+    def save(cls,username,email,password):
+        format_str = f"""
+        INSERT INTO public.users (username,email,password)
+        VALUES ('{username}','{email}','{password}');
+        """
+        cursor.execute(format_str)
+        return {
+            "username": username,
+            "email": email,
+        }
 
-        # list_dict = []
-        #
-        # for item in rows:
-        #
-        #     z = {}
-        #
-        #     z['id'] = item[0]
-        #     z['title'] = item[1]
-        #     z["description"] = item[2]
-        #     z['datecreated'] = item[3]
-        #     list_dict.append(z)
-        #
-        # entry = list_dict[entry_id]
-        # print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-        # print("this is my",entry)
 
-        return {}
 
-    @classmethod
-    def modify_entry(cls, id, modified_object):
-        """Method to modify an entry"""
-        cls.entries[id] = modified_object
-        return modified_object
-
-    def delete(self):
-        """Method to delete an entry"""
-        Entry.entries.remove(self)
-
-    @classmethod
-    def entry_exists(cls, title):
-        """Method to check whether an entry exists"""
-        for entry in cls.entries:
-            if entry.title == title:
-                return True
-        return False
