@@ -5,10 +5,10 @@ import psycopg2
 
 try:
     # connect_str = "dbname='diary_db' user='antony' host='localhost' " + \
-                #   "password='password'"
+    #               "password='password'"
     connect_str = "dbname='diary_db_test' user='postgres' host='localhost' " + \
-                  "password='postgres'"
-     #enabled for testing
+      "password='postgres'"
+    # enabled for testing
     os.environ['DATABASE_URL'] = connect_str
     conn = psycopg2.connect(os.environ['DATABASE_URL'])
     conn.autocommit = True
@@ -23,7 +23,7 @@ except Exception as e:
 class Entry:
 
     @classmethod
-    def save(cls, user_id,date_created, date_modified, title, description):
+    def save(cls, user_id, date_created, date_modified, title, description):
         """Method to save an entry"""
         format_str = f"""
         INSERT INTO public.entries (user_id,title,description,date_created,date_modified)
@@ -33,7 +33,7 @@ class Entry:
 
         return {
             "user_id": user_id,
-            "date_created":date_created,
+            "date_created": date_created,
             "title": title,
             "description": description
         }
@@ -57,7 +57,6 @@ class Entry:
             z['date_modified'] = item[3]
             z['title'] = item[4]
             z["description"] = item[5]
-           
 
             list_dict.append(z)
             print("list_dict")
@@ -76,11 +75,11 @@ class Entry:
     #     print(rows)
 
     #     list_dict = []
-        
+
     #     for item in rows:
-        
+
     #         z = {}
-        
+
     #         z['id'] = item[0]
     #         z['user_id'] = item[1]
     #         z['date_created'] = item[2]
@@ -88,7 +87,7 @@ class Entry:
     #         z["description"] = item[4]
 
     #         list_dict.append(z)
-        
+
     #     entry = list_dict[id]
     #     print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
     #     print("this is my",entry)
@@ -101,12 +100,12 @@ class Entry:
     #     cls.entries[id] = modified_object
     #     return modified_object
 
- 
 
 class User:
 
     @classmethod
-    def save(cls,username,email,password):
+    # this method registers a user in the database
+    def save(cls, username, email, password):
         format_str = f"""
         INSERT INTO public.users (username,email,password)
         VALUES ('{username}','{email}','{password}');
@@ -117,5 +116,12 @@ class User:
             "email": email,
         }
 
-
-
+    @classmethod
+    def find_by_email(cls, email):
+        # This method gets a user using email
+        try:
+            cursor.execute("select * from users where email = %s", (email,))
+            user = cursor.fetchone()
+            return list(user)
+        except Exception as e:
+            return e
