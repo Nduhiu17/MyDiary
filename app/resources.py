@@ -1,14 +1,10 @@
 from flask import request, abort
-from flask_jwt_extended import create_access_token, create_refresh_token
+from flask_jwt_extended import create_access_token
 from flask_restplus import Resource, reqparse
 from datetime import datetime
 
 from .models import Entry
 from .models import User
-
-parser = reqparse.RequestParser()
-parser.add_argument('username', help='This field cannot be blank', required=True)
-parser.add_argument('password', help='This field cannot be blank', required=True)
 
 
 class EntryResource(Resource):
@@ -60,50 +56,31 @@ class OneEntryResource(Resource):
 
 class UserRegistrationResource(Resource):
     def post(self):
-        user = User.save(username=request.json['username'],  email=request.json['email'],password=request.json['password'])
+        parser = reqparse.RequestParser()
+        parser.add_argument('username', help='This field cannot be blank', required=True)
+        user = User.save(username=request.json['username'], email=request.json['email'],
+                         password=User.generate_hash(request.json['password']))
 
         return {"status": "Registered", "data": user}, 201
-
-        # data = parser.parse_args()
-        # if User.find_by_username(data['username']):
-        #     return {'message': 'User {} already exists'.format(data['username'])}
-
-        # new_user = User.save(username=request.json['username'], email=request.json['email'],
-                             # password=request.json['password'])
-        # print(data['new_user'])
-        # return {"status": "Registered", "data": new_user}, 201
-        # try:
-        #     # new_user.save_to_db()
-        #     access_token = create_access_token(identity=data['username'])
-        #     refresh_token = create_refresh_token(identity=data['username'])
-        #
-        #     return {
-        #                'message': 'User {} was created'.format(data['username']),
-        #                'access_token': access_token,
-        #                'refresh_token': refresh_token
-        #            }, 201
-        #
-        # except:
-        #     return {
-        #                'message': 'Something went wrong'
-        #            }, 500
 
 
 class UserLoginResource(Resource):
     def post(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument('password', help='This3 field cannot be blank', required=True)
+        parser.add_argument('email', help='This field cannot be blank', required=True)
         data = parser.parse_args()
-        current_user = User.find_by_username(data['username'])
+        current_user = User.find_by_email(data['email'])
+        print(current_user)
         if not current_user:
-            return {'message': 'User {} doesn\'t exist'.format(data['username'])}
-
-        if User.verify_hash(data['password'], current_user.password):
-            access_token = create_access_token(identity=data['username'])
-            refresh_token = create_refresh_token(identity=data['username'])
-
+            return {'message': 'User {} doesn\'t exist'.format(data['email'])}
+        elif User.verify_hash("passworddgx", current_user[3]):
+            access_token = create_access_token(identity=data['email'])
+            print("the token is here")
+            print(access_token)
             return {
-                'message': 'Logged in as {}'.format(current_user.username),
+                'message': 'Logged in as {}'.format(current_user.email),
                 'access_token': access_token,
-                'refresh_token': refresh_token
             }
         else:
             return {'message': 'Wrong credentials'}

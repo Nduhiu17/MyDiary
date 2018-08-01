@@ -5,12 +5,12 @@ import psycopg2
 from passlib.handlers.pbkdf2 import pbkdf2_sha256
 
 try:
-    # connect_str = "dbname='diary_db' user='antony' host='localhost' " + \
-    #               "password='password'"
-    connect_str = "dbname='diary_db_test' user='postgres' host='localhost' " + \
-                  "password='postgres'"
+    connect_str = "dbname='diary_db' user='antony' host='localhost' " + \
+                  "password='password'"
+    # connect_str = "dbname='diary_db_test' user='postgres' host='localhost' " + \
+    #   "password='postgres'"
     # enabled for testing
-    os.environ['DATABASE_URL'] = connect_str
+    # os.environ['DATABASE_URL'] = connect_str
     conn = psycopg2.connect(os.environ['DATABASE_URL'])
     conn.autocommit = True
     cursor = conn.cursor()
@@ -112,9 +112,11 @@ class User:
         VALUES ('{username}','{email}','{password}');
         """
         cursor.execute(format_str)
+
         return {
             "username": username,
             "email": email,
+            "password": password,
         }
 
     @classmethod
@@ -134,5 +136,8 @@ class User:
 
     @staticmethod
     # method to verify the harshed password
+
     def verify_hash(password, hash):
-        return pbkdf2_sha256.verify(password, hash)
+        # hash = pbkdf2_sha256.encrypt("toomanysecrets")
+        # print("im here",pbkdf2_sha256.verify(password, hash))
+        return pbkdf2_sha256.verify(password,hash)

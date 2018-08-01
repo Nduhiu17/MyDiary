@@ -17,6 +17,7 @@ class DatabaseTestCase(unittest.TestCase):
     #     self.db.drop_entries_table()
 
     def test_database_init(self):
+        #test database initialization
         cursor = self.db.cursor
         cursor.execute('SELECT * FROM "public"."users"')
         rows = cursor.fetchall()
@@ -24,8 +25,17 @@ class DatabaseTestCase(unittest.TestCase):
         self.assertTrue(type(rows), list)
 
     def test_entries_table_created(self):
+        #tests whether table entries is created
         cursor = self.db.cursor
         cursor.execute('SELECT * FROM "public"."entries"')
+        rows = cursor.fetchall()
+        print(rows)
+        self.assertTrue(type(rows), list)
+
+    def test_users_table_created(self):
+        #tests table users is created
+        cursor = self.db.cursor
+        cursor.execute('SELECT * FROM "public"."users"')
         rows = cursor.fetchall()
         print(rows)
         self.assertTrue(type(rows), list)
