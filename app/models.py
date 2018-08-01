@@ -2,12 +2,13 @@ import os
 from datetime import datetime
 
 import psycopg2
+from passlib.handlers.pbkdf2 import pbkdf2_sha256
 
 try:
     # connect_str = "dbname='diary_db' user='antony' host='localhost' " + \
     #               "password='password'"
     connect_str = "dbname='diary_db_test' user='postgres' host='localhost' " + \
-      "password='postgres'"
+                  "password='postgres'"
     # enabled for testing
     os.environ['DATABASE_URL'] = connect_str
     conn = psycopg2.connect(os.environ['DATABASE_URL'])
@@ -125,3 +126,13 @@ class User:
             return list(user)
         except Exception as e:
             return e
+
+    @staticmethod
+    # method to generate hash from the password
+    def generate_hash(password):
+        return pbkdf2_sha256.hash(password)
+
+    # @staticmethod
+    # # method to verify the harshed password
+    # def verify_hash(password, hash):
+    #     return pbkdf2_sha256.verify(password, hash)
