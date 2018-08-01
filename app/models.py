@@ -132,7 +132,7 @@ class User:
     def generate_hash(password):
         return pbkdf2_sha256.hash(password)
 
-    # @staticmethod
-    # # method to verify the harshed password
-    # def verify_hash(password, hash):
-    #     return pbkdf2_sha256.verify(password, hash)
+    @staticmethod
+    # method to verify the harshed password
+    def verify_hash(password, hash):
+        return pbkdf2_sha256.verify(password, hash)
