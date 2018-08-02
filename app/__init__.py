@@ -13,8 +13,10 @@ app = Flask(__name__)
 app.config['JWT_SECRET_KEY'] = 'toomanysecrets' 
 jwt = JWTManager(app)
 try:
-    connect_str = "dbname='diary_db' user='antony' host='localhost' " + \
-                  "password='password'"
+    connect_str = "dbname='dfnto48h4ufbi7' user='jkxwwyumvnralw' host='ec2-50-19-86-139.compute-1.amazonaws.com' " + \
+                  "password='7da5145d4d847858d077725513fb772ce186f8f263e7e203bc9ffb277619465e'"
+    # connect_str = "dbname='diary_db' user='antony' host='localhost' " + \
+    #               "password='password'"
     conn = psycopg2.connect(connect_str)
     cursor = conn.cursor()
 except Exception as e:

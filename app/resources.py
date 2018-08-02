@@ -10,7 +10,7 @@ from .models import User
 class EntryResource(Resource):
     """Method to get all entries(GET request)"""
 
-    @jwt_required
+    # @jwt_required
     def get(self):
         results = Entry.get_all_entries()
         return results
