@@ -8,6 +8,10 @@ from database import Database
 
 
 class DiarylistTestCase(unittest.TestCase):
+    def tearDown(self):
+        self.db.drop_entries_table()
+        self.db.drop_users_table()
+
     def setUp(self):
         connect_str = "dbname='diary_db_test' user='postgres' host='localhost' " + "password='postgres'"
         os.environ['DATABASE_URL'] = connect_str
@@ -17,9 +21,6 @@ class DiarylistTestCase(unittest.TestCase):
         self.app = app
         self.client = self.app.test_client()
 
-    def tearDown(self):
-        self.db.drop_entries_table()
-        self.db.drop_users_table()
 
     def test_register_user(self):
         new_user = {'username': 'kamau', 'email': 'otieno@gmail.com', 'password': 'password'}
@@ -27,22 +28,24 @@ class DiarylistTestCase(unittest.TestCase):
                                     headers={'Content-Type': 'application' '/json'})
         self.assertEqual(response.status_code, 201)
 
-    # def test_api_post_diaryentry(self):
-    #     """Test api can create an entry (POST response)"""
-    #     entry = {'user_id': 1, 'title': 'test_title', 'description': 'watched the latest movie'}
-    #     response = self.client.post('api/v1/entries/', data=json.dumps(entry),
-    #                                 headers={'Content-Type': 'application' '/json'})
-    #     self.assertEqual(response.status_code, 201)
+    def test_api_post_diaryentry(self):
+        """Test api can create an entry (POST response)"""
+        entry = {'user_id': 1, 'title': 'test_title', 'description': 'watched the latest movie'}
+        response = self.client.post('api/v1/entries/', data=json.dumps(entry),
+                                    headers={'Content-Type': 'application' '/json'})
+        self.assertEqual(response.status_code, 201)
 
     def test_api_get_all_diaryentries(self):
         """Test API can get all entries(GET response)"""
         get_all_response = self.client.get('/api/v1/entries/')
         self.assertEqual(get_all_response.status_code, 200)
 
-    def test_api_diary_entries(self):
+    def test_api_diary_entries(self, capsys):
         """Test whether data stored is a list"""
         get_all_response = self.client.get('/api/v1/entries/')
-        self.assertEqual(type(json.loads(get_all_response.get_data().decode())), list)
+        with capsys.disabled():
+          print("testing log",json.loads(get_all_response.get_data().decode()))
+        self.assertEqual(type(json.loads(get_all_response.get_data())), list)
 
     # def test_api_get_diaryentry(self, id=0):
     #     """Test Api can get a single entry"""

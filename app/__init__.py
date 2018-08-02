@@ -3,8 +3,8 @@ from flask_jwt_extended import JWTManager
 from flask_restplus import Api
 
 from app.models import Entry
-from app.resources import EntryResource, UserLoginResource, UserRegistrationResource
-from app.resources import EntryResource, OneEntryResource
+from app.resources import EntryResource, UserLoginResource, UserRegistrationResource, DeleteResource, OneEntryResource, \
+    PutResource
 from app.users import UserResource
 import psycopg2
 
@@ -27,8 +27,11 @@ app.debug = True
 
 api.add_resource(UserRegistrationResource, '/api/v1/register/')
 api.add_resource(UserLoginResource, '/api/v1/login/')
-api.add_resource(OneEntryResource, '/api/v1/entries/<int:id>')
+api.add_resource(OneEntryResource, '/api/v1/entries/<int:id>','/api/v1/entries/<int:id>','/api/v1/entries/<int:id>')
 api.add_resource(EntryResource, '/api/v1/entries/', '/api/v1/entries/', '/api/v1/entries/<int:id>')
+api.add_resource(DeleteResource, '/api/v1/entries/<int:id>')
+api.add_resource(PutResource, '/api/v1/entry/<int:id>')
+
 
 
 
