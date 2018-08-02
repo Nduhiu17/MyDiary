@@ -1,5 +1,5 @@
 from flask import request, abort
-from flask_jwt_extended import create_access_token
+from flask_jwt_extended import create_access_token,jwt_required
 from flask_restplus import Resource, reqparse
 from datetime import datetime
 
@@ -9,11 +9,11 @@ from .models import User
 
 class EntryResource(Resource):
     """Method to get all entries(GET request)"""
-
+    @jwt_required
     def get(self):
         results = Entry.get_all_entries()
         return results
-
+    @jwt_required
     def post(self):
         """Method to add an entry(POST request)"""
         if not request.json:
@@ -74,13 +74,13 @@ class UserLoginResource(Resource):
         print(current_user)
         if not current_user:
             return {'message': 'User {} doesn\'t exist'.format(data['email'])}
-        elif User.verify_hash("passworddgx", current_user[3]):
+
+        if User.verify_hash(data['password'], current_user[3]):
             access_token = create_access_token(identity=data['email'])
-            print("the token is here")
-            print(access_token)
             return {
-                'message': 'Logged in as {}'.format(current_user.email),
+                'message': 'Logged in as {}'.format(current_user[1]),
                 'access_token': access_token,
             }
         else:
             return {'message': 'Wrong credentials'}
+

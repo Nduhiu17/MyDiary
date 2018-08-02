@@ -10,6 +10,7 @@ import psycopg2
 
 
 app = Flask(__name__)
+app.config['JWT_SECRET_KEY'] = 'toomanysecrets' 
 jwt = JWTManager(app)
 try:
     connect_str = "dbname='diary_db' user='antony' host='localhost' " + \

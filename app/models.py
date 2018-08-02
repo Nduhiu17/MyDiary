@@ -65,35 +65,27 @@ class Entry:
 
         return list_dict
 
-    # @classmethod
-    # def get_entry(cls, entry_id):
-    #     """Method to get an entry by id"""
-    #     # entry = cls.entries[entry_id]
-    #     # return entry
-    #     cursor.execute('SELECT * FROM "public"."entries"')
-    #     rows = cursor.fetchone()
-    #     print("######################################")
-    #     print(rows)
+    @classmethod
+    def get_entry(cls,id):
+        """Method to get an entry by id"""
+        cursor.execute('SELECT * FROM "public"."entries";')
+        rows = cursor.fetchall()
+        print(rows)
 
-    #     list_dict = []
+        list_dict = []
 
-    #     for item in rows:
+        for item in rows:
+            z = {}
 
-    #         z = {}
+            z['id'] = item[0]
+            z['user_id'] = item[1]
+            z['date_created'] = item[2]
+            z['date_modified'] = item[3]
+            z['title'] = item[4]
+            z["description"] = item[5]
 
-    #         z['id'] = item[0]
-    #         z['user_id'] = item[1]
-    #         z['date_created'] = item[2]
-    #         z['title'] = item[3]
-    #         z["description"] = item[4]
+            list_dict.append(z)
 
-    #         list_dict.append(z)
-
-    #     entry = list_dict[id]
-    #     print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-    #     print("this is my",entry)
-
-    #     return {}
 
     # @classmethod
     # def modify_entry(cls, id, modified_object):
