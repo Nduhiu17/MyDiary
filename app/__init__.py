@@ -8,9 +8,8 @@ from app.resources import EntryResource, UserLoginResource, UserRegistrationReso
 from app.users import UserResource
 import psycopg2
 
-
 app = Flask(__name__)
-app.config['JWT_SECRET_KEY'] = 'toomanysecrets' 
+app.config['JWT_SECRET_KEY'] = 'toomanysecrets'
 jwt = JWTManager(app)
 try:
     connect_str = "dbname='dfnto48h4ufbi7' user='jkxwwyumvnralw' host='ec2-50-19-86-139.compute-1.amazonaws.com' " + \
@@ -21,20 +20,15 @@ try:
     cursor = conn.cursor()
 except Exception as e:
     print("failed to connect db")
-    print(e)
-
 
 api = Api(app)
 app.debug = True
 
 api.add_resource(UserRegistrationResource, '/api/v1/register/')
 api.add_resource(UserLoginResource, '/api/v1/login/')
-api.add_resource(OneEntryResource, '/api/v1/entries/<int:id>','/api/v1/entries/<int:id>','/api/v1/entries/<int:id>')
+api.add_resource(OneEntryResource, '/api/v1/entries/<int:id>', '/api/v1/entries/<int:id>', '/api/v1/entries/<int:id>')
 api.add_resource(EntryResource, '/api/v1/entries/', '/api/v1/entries/', '/api/v1/entries/<int:id>')
 api.add_resource(DeleteResource, '/api/v1/entries/<int:id>')
 api.add_resource(PutResource, '/api/v1/entry/<int:id>')
-
-
-
 
 from . import resources, models
