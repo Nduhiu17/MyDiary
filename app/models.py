@@ -1,5 +1,7 @@
 import os
 from datetime import datetime
+from flask_jwt_extended import get_jwt_identity
+
 
 import psycopg2
 from passlib.handlers.pbkdf2 import pbkdf2_sha256
@@ -9,6 +11,8 @@ try:
                   "password='password'"
     # connect_str = "dbname='diary_db_test' user='postgres' host='localhost' " + \
     #   "password='postgres'"
+    # connect_str = "dbname='dfnto48h4ufbi7' user='jkxwwyumvnralw' host='ec2-50-19-86-139.compute-1.amazonaws.com' " + \
+    #               "password='7da5145d4d847858d077725513fb772ce186f8f263e7e203bc9ffb277619465e'"
     # enabled for testing
     # os.environ['DATABASE_URL'] = connect_str
     conn = psycopg2.connect(os.environ['DATABASE_URL'])
@@ -17,7 +21,7 @@ try:
     print("db connectd!!!")
 
 except Exception as e:
-    print("Uh oh, can't connect. Invalid dbname, user or password?")
+    print("can't connect. Invalid dbname, user or password?")
     print(e)
 
 
@@ -39,11 +43,40 @@ class Entry:
             "description": description
         }
 
+    # @classmethod
+    # def get_all_entries(cls):
+    #     """Method to get all entries"""
+    #     # cursor.execute(f"select * FROM public.entries e join public.users u on e.user_id = u.id where u.email = '{current_user}'")
+    #     current_user = get_jwt_identity()
+    #     if current_user:
+    #         cursor.execute(
+    #             f"SELECT * FROM public.entries ")
+    #         rows = cursor.fetchall()
+    #         print(rows)
+    #
+    #         list_dict = []
+    #
+    #         for item in rows:
+    #             z = {}
+    #
+    #             z['id'] = item[0]
+    #             z['user_id'] = item[1]
+    #             z['date_created'] = item[2]
+    #             z['date_modified'] = item[3]
+    #             z['title'] = item[4]
+    #             z["description"] = item[5]
+    #
+    #             list_dict.append(z)
+    #             print("list_dict")
+    #             print(os.environ['DATABASE_URL'])
+    #
+    #         return list_dict
+
     @classmethod
     def get_all_entries(cls):
         """Method to get all entries"""
-
-        cursor.execute('SELECT * FROM "public"."entries";')
+        cursor.execute(
+            f"SELECT * FROM public.entries")
         rows = cursor.fetchall()
         print(rows)
 
@@ -66,32 +99,43 @@ class Entry:
         return list_dict
 
     @classmethod
-    def get_entry(cls,id):
+    def get_entry(cls, id):
         """Method to get an entry by id"""
-        cursor.execute('SELECT * FROM "public"."entries";')
-        rows = cursor.fetchall()
-        print(rows)
+        cursor.execute('SELECT * FROM "public"."entries" WHERE id=%s', (id,))
+        row = cursor.fetchone()
 
-        list_dict = []
+        return {
+            "id": row[0],
+            "user_id": row[1],
+            "date_created": row[2],
+            "date_modified": row[3],
+            "title": row[4],
+            "description": row[5]
+        }
 
-        for item in rows:
-            z = {}
+    @classmethod
+    def delete(cls, id):
+        try:
+            cursor.execute('DELETE FROM public.entries WHERE id = %s', (id,))
+            return "success"
+        except:
+            return "failed"
 
-            z['id'] = item[0]
-            z['user_id'] = item[1]
-            z['date_created'] = item[2]
-            z['date_modified'] = item[3]
-            z['title'] = item[4]
-            z["description"] = item[5]
+    @classmethod
+    def update(cls, title, description, id):
+        """Method to save an entry"""
 
-            list_dict.append(z)
+        format_str = f"""
+        UPDATE public.entries SET title = '{title}', description = '{description}', date_modified = '{str(datetime.now())}' WHERE id = {id};
+        """
 
+        cursor.execute(format_str)
 
-    # @classmethod
-    # def modify_entry(cls, id, modified_object):
-    #     """Method to modify an entry"""
-    #     cls.entries[id] = modified_object
-    #     return modified_object
+        return {
+            "date_modified": str(datetime.now()),
+            "title": title,
+            "description": description
+        }
 
 
 class User:
@@ -99,6 +143,10 @@ class User:
     @classmethod
     # this method registers a user in the database
     def save(cls, username, email, password):
+        found_user = cls.find_by_email(email)
+        print("asdfcgvhb",os.environ['DATABASE_URL'])
+        if found_user != False:
+            return {'status': "failed", "message": 'email already registered'}
         format_str = f"""
         INSERT INTO public.users (username,email,password)
         VALUES ('{username}','{email}','{password}');
@@ -108,28 +156,25 @@ class User:
         return {
             "username": username,
             "email": email,
-            "password": password,
         }
 
     @classmethod
+    # This method gets a user using email
     def find_by_email(cls, email):
-        # This method gets a user using email
         try:
             cursor.execute("select * from users where email = %s", (email,))
             user = cursor.fetchone()
             return list(user)
         except Exception as e:
-            return e
+            return False
 
-    @staticmethod
     # method to generate hash from the password
+    @staticmethod
     def generate_hash(password):
         return pbkdf2_sha256.hash(password)
 
-    @staticmethod
     # method to verify the harshed password
-
+    @staticmethod
     def verify_hash(password, hash):
         # hash = pbkdf2_sha256.encrypt("toomanysecrets")
-        # print("im here",pbkdf2_sha256.verify(password, hash))
-        return pbkdf2_sha256.verify(password,hash)
+        return pbkdf2_sha256.verify(password, hash)

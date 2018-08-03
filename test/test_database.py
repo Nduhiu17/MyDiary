@@ -12,9 +12,6 @@ class DatabaseTestCase(unittest.TestCase):
         self.db.create_users_table()
         self.db.create_entries_table()
 
-    # def tearDown(self):
-    #     self.db.drop_users_table()
-    #     self.db.drop_entries_table()
 
     def test_database_init(self):
         #test database initialization
