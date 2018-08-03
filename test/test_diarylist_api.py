@@ -33,12 +33,12 @@ class DiarylistTestCase(unittest.TestCase):
         entry = {'user_id': 1, 'title': 'test_title', 'description': 'watched the latest movie'}
         response = self.client.post('api/v1/entries/', data=json.dumps(entry),
                                     headers={'Content-Type': 'application' '/json'})
-        self.assertEqual(response.status_code, 500)
+        self.assertEqual(response.status_code, 200)
 
     def test_api_get_all_diaryentries(self):
         """Test API can get all entries(GET response)"""
         get_all_response = self.client.get('/api/v1/entries/')
-        self.assertEqual(get_all_response.status_code, 500)
+        self.assertEqual(get_all_response.status_code, 200)
 
     def test_api_diary_entries(self, capsys):
         """Test whether data stored is a list"""
@@ -50,7 +50,7 @@ class DiarylistTestCase(unittest.TestCase):
     def test_api_get_diaryentry(self, id=0):
         """Test Api can get a single entry"""
         get_response = self.client.get('api/v1/entries/0')
-        self.assertEqual(get_response.status_code, 500)
+        self.assertEqual(get_response.status_code, 200)
 
     def test_posted_entry_is_dictionary(self):
         """Test whether created data is a dictionary"""
