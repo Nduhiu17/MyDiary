@@ -12,9 +12,14 @@ class EntryResource(Resource):
 
     @jwt_required
     def get(self):
-        current_user = get_jwt_identity()
-        print("we are here",current_user)
-        results = Entry.get_all_entries(current_user)
+        # current_user = get_jwt_identity()
+        # Retrieve token from headers
+        #decode token to get email
+        # call get_user_by_email method and pass the email from the decoded token to query from db
+        # from the user details returned retrieve the id
+        # call the get_all_entries method passing the id as an argument
+        # this will return the entries for that user
+        results = Entry.get_all_entries()
         return results
 
     @jwt_required
