@@ -2,8 +2,11 @@ import datetime
 
 class Config(object):
     DEBUG = True
-    TESTING = True
+    TESTING = False
     CSRF_ENABLED = True
+    SECRET_KEY='toomanysecrets'
+    APP_NAME = 'MyDiary'
+
 
 
 class ProductionConfig(Config):
