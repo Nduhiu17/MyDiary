@@ -5,14 +5,14 @@ import psycopg2
 from passlib.handlers.pbkdf2 import pbkdf2_sha256
 
 try:
-    # connect_str = "dbname='diary_db' user='antony' host='localhost' " + \
-    #               "password='password'"
+    connect_str = "dbname='diary_db' user='antony' host='localhost' " + \
+                  "password='password'"
     # connect_str = "dbname='diary_db_test' user='postgres' host='localhost' " + \
     #   "password='postgres'"
-    connect_str = "dbname='dfnto48h4ufbi7' user='jkxwwyumvnralw' host='ec2-50-19-86-139.compute-1.amazonaws.com' " + \
-                  "password='7da5145d4d847858d077725513fb772ce186f8f263e7e203bc9ffb277619465e'"
+    # connect_str = "dbname='dfnto48h4ufbi7' user='jkxwwyumvnralw' host='ec2-50-19-86-139.compute-1.amazonaws.com' " + \
+    #               "password='7da5145d4d847858d077725513fb772ce186f8f263e7e203bc9ffb277619465e'"
     # enabled for testing
-    # os.environ['DATABASE_URL'] = connect_str
+    os.environ['DATABASE_URL'] = connect_str
     conn = psycopg2.connect(os.environ['DATABASE_URL'])
     conn.autocommit = True
     cursor = conn.cursor()
@@ -42,10 +42,11 @@ class Entry:
         }
 
     @classmethod
-    def get_all_entries(cls):
+    def get_all_entries(cls,current_user):
         """Method to get all entries"""
+        # select * FROM public.entries e join public.users u on e.user_id = u.id where u.email = 'user2@name.com'
 
-        cursor.execute('SELECT * FROM "public"."entries";')
+        cursor.execute(f"select * FROM public.entries e join public.users u on e.user_id = u.id where u.email = '{current_user}'")
         rows = cursor.fetchall()
         print(rows)
 
@@ -113,6 +114,7 @@ class User:
     # this method registers a user in the database
     def save(cls, username, email, password):
         found_user = cls.find_by_email(email)
+        print("asdfcgvhb",os.environ['DATABASE_URL'])
         if found_user != False:
             return {'status': "failed", "message": 'email already registered'}
         format_str = f"""
