@@ -1,9 +1,6 @@
 .main-prof-bar{
     flex-direction: row;
 	width: 60%;
-	 /* border-left: 2px solid #eee; 
-	border-right: 2px solid #eee; */
-    height: 70vh;
     margin-top: 2vh;
 }
 
@@ -88,9 +85,7 @@ img{
 }
 
 .profbottomdiv {
-    margin-top: 10px;
     border: 2px solid #eee;
-    padding: 10px;
 }
 
 form {

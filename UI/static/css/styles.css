@@ -148,6 +148,8 @@ footer{
 	width:100%;
 	text-align: center;
 	background-color: #f6f7f8;
+	position: absolute;
+	bottom: 0;
 }
 
 .text {
@@ -173,6 +175,7 @@ footer{
 	.detailsmaincontainer{
 		margin: 10px;
 		border: 0.1px solid #ccc;
+		padding: 5px;
 	}
 
 	.detailsmaincontainer >div{
@@ -258,18 +261,6 @@ footer{
 	.signupform{
 		margin-top: 25px;
 
-	}
-
-	.inputform{
-		margin: 10px;
-		font-weight: 100;
-		font-size: 25px;
-		margin-left: -1vh;
-		padding-top: 5px;
-		padding-bottom: 5px;
-		width: 100%;
-		border: 1px solid #e0e0e0;
-        border-radius: 8px;
 	}
 
 	.terms >p{
@@ -368,7 +359,7 @@ footer{
 	margin-top: 44px;
 	}
 
-	input[type=text], select {
+	input[type=text],input[type=password], select {
 		padding: 6px 20px;
 		margin: 8px 0;
 		display: inline-block;
@@ -433,19 +424,11 @@ footer{
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	margin: 10px;
-	font-weight: 100;
-	font-size: 25px;
 	margin-left: -1vh;
 	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-bottom: 9px;
 }
 
-.footersignin{
-   position:absolute;
-   bottom:0;
-   width:100%;
-   height:60px;
-}
 
 .signbuttons{
 	display: flex;
