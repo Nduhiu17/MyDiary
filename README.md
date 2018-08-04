@@ -47,23 +47,32 @@ After setting up the above. Run the application by:
 
 Test the endpoints registered  on Postman:
 
-1.End point to get all entries
 
-  ```https://diary-server.herokuapp.com/api/v1/entries/```
+1.End point to registering a user
 
-2.End point to get a single entry
+ > ```https://diary-server.herokuapp.com/api/v1/entries/```
  
- ``` https://diary-server.herokuapp.com/api/v1/entries/0```
+2. End point to login in a user
 
-3.End point to add an entry.
+ > ```https://diary-server.herokuapp.com/api/v1/login/```
 
-  ```https://diary-server.herokuapp.com/api/v1/entries/```
+3. End point to get all entries
 
-4.End point to update an entry.
+ > ```https://diary-server.herokuapp.com/api/v1/entries/```
+
+4. End point to get a single entry
+ 
+ > ``` https://diary-server.herokuapp.com/api/v1/entries/0```
+
+5. End point to add an entry.
+
+ > ```https://diary-server.herokuapp.com/api/v1/entries/```
+
+6. End point to update an entry.
 
   ```https://diary-server.herokuapp.com/api/v1/entries/2```
 
-4.End point to delete an entry.
+7. End point to delete an entry.
 
   ```https://diary-server.herokuapp.com/api/v1/entries/1```
 
