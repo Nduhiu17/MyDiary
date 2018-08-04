@@ -36,3 +36,11 @@ class DatabaseTestCase(unittest.TestCase):
         rows = cursor.fetchall()
         print(rows)
         self.assertTrue(type(rows), list)
+
+    def test_table_drop(self):
+        # test database table dropped
+        cursor = self.db.cursor
+        cursor.execute('SELECT EXISTS (SELECT 1 FROM "public"."entries")')
+        rows = cursor.fetchall()
+        print("test drop table",rows)
+        self.assertTrue(rows,False)
