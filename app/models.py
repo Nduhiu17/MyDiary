@@ -14,7 +14,7 @@ try:
     # connect_str = "dbname='dfnto48h4ufbi7' user='jkxwwyumvnralw' host='ec2-50-19-86-139.compute-1.amazonaws.com' " + \
     #               "password='7da5145d4d847858d077725513fb772ce186f8f263e7e203bc9ffb277619465e'"
     # enabled for testing
-    # os.environ['DATABASE_URL'] = connect_str
+    os.environ['DATABASE_URL'] = connect_str
     conn = psycopg2.connect(os.environ['DATABASE_URL'])
     conn.autocommit = True
     cursor = conn.cursor()
@@ -42,35 +42,6 @@ class Entry:
             "title": title,
             "description": description
         }
-
-    # @classmethod
-    # def get_all_entries(cls):
-    #     """Method to get all entries"""
-    #     # cursor.execute(f"select * FROM public.entries e join public.users u on e.user_id = u.id where u.email = '{current_user}'")
-    #     current_user = get_jwt_identity()
-    #     if current_user:
-    #         cursor.execute(
-    #             f"SELECT * FROM public.entries ")
-    #         rows = cursor.fetchall()
-    #         print(rows)
-    #
-    #         list_dict = []
-    #
-    #         for item in rows:
-    #             z = {}
-    #
-    #             z['id'] = item[0]
-    #             z['user_id'] = item[1]
-    #             z['date_created'] = item[2]
-    #             z['date_modified'] = item[3]
-    #             z['title'] = item[4]
-    #             z["description"] = item[5]
-    #
-    #             list_dict.append(z)
-    #             print("list_dict")
-    #             print(os.environ['DATABASE_URL'])
-    #
-    #         return list_dict
 
     @classmethod
     def get_all_entries(cls):
