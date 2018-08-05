@@ -77,6 +77,11 @@ class UserRegistrationResource(Resource):
         parser.add_argument('password', help='This field cannot be blank', required=True)
         parser.add_argument('email', help='This field cannot be blank', required=True)
         data = parser.parse_args()
+        print("we are here test",len(data["password"]))
+        if len(data["password"]) < 5:
+            return {
+                "status":"Please enter a password with more than five characters"
+            },400
         user = User.save(username=data['username'], email=data['email'],
                          password=User.generate_hash(data['password']))
 
