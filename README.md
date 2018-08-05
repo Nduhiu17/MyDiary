@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/travis-ci/travis-web.svg?branch=master)](https://travis-ci.org/travis-ci/travis-web)
 [![Coverage Status](https://coveralls.io/repos/github/Nduhiu17/MyDiary/badge.svg)](https://coveralls.io/github/Nduhiu17/MyDiary)
+[![Maintainability](https://api.codeclimate.com/v1/badges/b04499fdf20b8901f228/maintainability)](https://codeclimate.com/github/Nduhiu17/MyDiary/maintainability)
 [![PEP8](https://img.shields.io/badge/code%20style-pep8-orange.svg)](https://www.python.org/dev/peps/pep-0008/)
 
 
