@@ -1,3 +1,6 @@
+env:
+  global:
+
 #Prgramming language used
 language: python
 #Language version
@@ -19,5 +22,6 @@ install:
 script:
   - pytest
   - pytest --cov=.
+  - python -m pytest --cov-report term-missing --cov=app
 after_success:
   - coverage run -m pytest
