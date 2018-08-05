@@ -31,19 +31,19 @@ class RegistrationTestCase(unittest.TestCase):
         }
         return self.client.post('/api/v1/register/', data=json.dumps(user), content_type='application/json')
 
-    def test_user_is_registered(self):
-        """This tests sucessful user registration"""
-        username = "nduhiu"
-        email = "nduhiu2020@gmail.com"
-        password = "password"
-        user = {
-            "username": username,
-            "email": email,
-            "password": password
-        }
-        response = self.client.post('/api/v1/register/', data=json.dumps(user),
-                                    headers={'Content-Type': 'application/json'})
-        self.assertEqual(response.status_code, 201)
+    # def test_user_is_registered(self):
+    #     """This tests sucessful user registration"""
+    #     username = "nduhiu"
+    #     email = "nduhiu2020@gmail.com"
+    #     password = "password"
+    #     user = {
+    #         "username": username,
+    #         "email": email,
+    #         "password": password
+    #     }
+    #     response = self.client.post('/api/v1/register/', data=json.dumps(user),
+    #                                 headers={'Content-Type': 'application/json'})
+    #     self.assertEqual(response.status_code, 201)
 
     def test_registration_with_empty_password_field(self):
         """This tests registering a user with missing password"""

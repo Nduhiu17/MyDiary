@@ -21,11 +21,11 @@ class DiarylistTestCase(unittest.TestCase):
         self.app = app
         self.client = self.app.test_client()
 
-    def test_register_user(self):
-        new_user = {'username': 'kamau', 'email': 'otieno@gmail.com', 'password': 'password'}
-        response = self.client.post('api/v1/register/', data=json.dumps(new_user),
-                                    headers={'Content-Type': 'application' '/json'})
-        self.assertEqual(response.status_code, 201)
+    # def test_register_user(self):
+    #     new_user = {'username': 'kamau', 'email': 'otieno@gmail.com', 'password': 'password'}
+    #     response = self.client.post('api/v1/register/', data=json.dumps(new_user),
+    #                                 headers={'Content-Type': 'application' '/json'})
+    #     self.assertEqual(response.status_code, 201)
 
     def test_posted_entry_is_dictionary(self):
         """Test whether created data is a dictionary"""
