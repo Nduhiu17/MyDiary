@@ -2,14 +2,16 @@ import os
 import psycopg2
 
 
-class Database:
 
+class Database:
+    # Method that defines variables
     def __init__(self):
         self.db = os.environ['DATABASE_URL']
         self.connection = psycopg2.connect(self.db)
         self.connection.autocommit = True
         self.cursor = self.connection.cursor()
 
+    # method that creates table users
     def create_users_table(self):
         sql_command = """ CREATE TABLE IF NOT EXISTS  users (
             id SERIAL PRIMARY KEY,
@@ -20,6 +22,7 @@ class Database:
                 """
         self.cursor.execute(sql_command)
 
+    # method that creates entries table
     def create_entries_table(self):
         sql_command = """ 
         CREATE TABLE IF NOT EXISTS "public"."entries"  (
@@ -36,6 +39,7 @@ class Database:
                 """
         self.cursor.execute(sql_command)
 
+    # method that drops users table
     def drop_users_table(self):
         sql_command = """ 
 
@@ -43,6 +47,7 @@ class Database:
                       """
         self.cursor.execute(sql_command)
 
+    # method that drops entries table
     def drop_entries_table(self):
         sql_command = """ 
 

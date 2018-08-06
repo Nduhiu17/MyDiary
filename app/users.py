@@ -4,6 +4,7 @@ from flask_restplus import Resource
 
 
 class UserResource(Resource):
+
     def post(self):
         user = User.save(username=request.json['username'], email=request.json['email'],
                          password=request.json['password'])

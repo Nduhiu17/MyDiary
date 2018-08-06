@@ -6,15 +6,12 @@ from database import Database
 
 class DatabaseTestCase(unittest.TestCase):
     def setUp(self):
-        connect_str = "dbname='diary_test' user='postgres' host='localhost' " + "password='postgres'"
+        connect_str = "dbname='diary_db_test' user='postgres' host='localhost' " + "password='postgres'"
         os.environ['DATABASE_URL'] = connect_str
         self.db = Database()
         self.db.create_users_table()
         self.db.create_entries_table()
 
-    # def tearDown(self):
-    #     self.db.drop_users_table()
-    #     self.db.drop_entries_table()
 
     def test_database_init(self):
         #test database initialization
@@ -39,3 +36,11 @@ class DatabaseTestCase(unittest.TestCase):
         rows = cursor.fetchall()
         print(rows)
         self.assertTrue(type(rows), list)
+
+    def test_table_drop(self):
+        # test database table dropped
+        cursor = self.db.cursor
+        cursor.execute('SELECT EXISTS (SELECT 1 FROM "public"."entries")')
+        rows = cursor.fetchall()
+        print("test drop table",rows)
+        self.assertTrue(rows,False)
