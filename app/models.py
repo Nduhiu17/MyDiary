@@ -5,12 +5,12 @@ import psycopg2
 from passlib.handlers.pbkdf2 import pbkdf2_sha256
 
 try:
-    connect_str = "dbname='diary_db' user='antony' host='localhost' " + \
-                  "password='password'"
-    # connect_str = "dbname='diary_db_test' user='postgres' host='localhost' " + \
-    #   "password='postgres'"
+    # connect_str = "dbname='diary_db' user='antony' host='localhost' " + \
+    #               "password='password'"
+    connect_str = "dbname='diary_db_test' user='postgres' host='localhost' " + \
+      "password='postgres'"
     # enabled for testing
-    # os.environ['DATABASE_URL'] = connect_str
+    os.environ['DATABASE_URL'] = connect_str
     conn = psycopg2.connect(os.environ['DATABASE_URL'])
     conn.autocommit = True
     cursor = conn.cursor()
