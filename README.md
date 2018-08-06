@@ -45,12 +45,12 @@ After setting up the above. Run the application by:
 
 >$```FLASK_APP=app flask run``
 
-Test the endpoints registered  on Postman:
+>Test the endpoints registered  on Postman:
 
 
-1.End point to registering a user
+ >1.End point to registering a user
 
- > ```https://diary-server.herokuapp.com/api/v1/entries/```
+ > ```https://diary-server.herokuapp.com/api/v1/register/```
  
 2. End point to login in a user
 
